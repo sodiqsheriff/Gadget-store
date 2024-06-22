@@ -19,7 +19,7 @@ const toggleSidebar = () => {
 };
   return (
     <>
-    <Sidebar aria-label="Default sidebar example" className='hidden lg:flex flex-col h-full  shadow  max-w-[16rem]' style={{ backgroundColor: 'transparent' }}>
+    <Sidebar aria-label="Default sidebar example" className='hidden lg:flex flex-col h-full border-r  shadow  max-w-[16rem]' style={{ backgroundColor: 'transparent' }}>
       <Sidebar.Items className='px-5 max-w-[12rem]'>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="/overview" icon={RiDashboardFill}  className="transition ease-out duration-300 transform hover:bg-custom-blue pl-3 font-medium text-[#817D7D]  active:font-semibold active:text-[#5B5AFB]">

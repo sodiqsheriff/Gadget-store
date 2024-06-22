@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Correct import from react-router-dom
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-
 export const Login =()=> {
 
 
@@ -31,9 +30,9 @@ export const Login =()=> {
         <Checkbox id="remember" />
         <Label htmlFor="remember" className='-mt-10'>Remember me</Label>
         </div>
-        <Link to="/" className='text-sm text-[#2563EB] font-semibold'>Forget Password?</Link>
+        <Link to="/reset" className='text-sm text-[#2563EB] font-semibold'>Forget Password?</Link>
       </div>
-      <Link to='./_Component/Product.jsx' className='w-full text-center text-white font-semibold p-2 rounded-md text-lg bg-[#2563EB]'>
+      <Link to='../_Component/Product.jsx' className='w-full text-center text-white font-semibold p-2 rounded-md bg-[#2563EB]'>
        Login 
         </Link>
     </form>

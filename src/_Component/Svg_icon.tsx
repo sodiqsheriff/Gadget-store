@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const Home = `<svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 18.4159V11.4159C6 10.8636 6.44772 10.4159 7 10.4159H11C11.5523 10.4159 12 10.8636 12 11.4159V18.4159M1 16.4159V8.85685C1 7.65711 1.53851 6.52074 2.46705 5.76102L7.73352 1.45209C8.47026 0.849305 9.52974 0.849305 10.2665 1.45209L15.533 5.76102C16.4615 6.52074 17 7.65712 17 8.85685V16.4159C17 17.5205 16.1046 18.4159 15 18.4159H13H5H3C1.89543 18.4159 1 17.5204 1 16.4159Z" stroke="#817D7D" stroke-width="2" stroke-linecap="round"/>
@@ -10,7 +10,7 @@ export const Role = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
 </svg>
 `;
 
-export const Customers= `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+export const Customers = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 14C13.6569 14 15 12.6569 15 11C15 9.34315 13.6569 8 12 8C10.3431 8 9 9.34315 9 11C9 12.6569 10.3431 14 12 14ZM12 14C9.23858 14 7 16.2386 7 19M12 14C14.7614 14 17 16.2386 17 19M9 23H15C17.8003 23 19.2004 23 20.27 22.455C21.2108 21.9757 21.9757 21.2108 22.455 20.27C23 19.2004 23 17.8003 23 15V9C23 6.19974 23 4.79961 22.455 3.73005C21.9757 2.78924 21.2108 2.02433 20.27 1.54497C19.2004 1 17.8003 1 15 1H9C6.19974 1 4.79961 1 3.73005 1.54497C2.78924 2.02433 2.02433 2.78924 1.54497 3.73005C1 4.79961 1 6.19974 1 9V15C1 17.8003 1 19.2004 1.54497 20.27C2.02433 21.2108 2.78924 21.9757 3.73005 22.455C4.79961 23 6.19974 23 9 23ZM8.2 19H15.8C16.9201 19 17.4802 19 17.908 18.782C18.2843 18.5903 18.5903 18.2843 18.782 17.908C19 17.4802 19 16.9201 19 15.8V8.2C19 7.07989 19 6.51984 18.782 6.09202C18.5903 5.71569 18.2843 5.40973 17.908 5.21799C17.4802 5 16.9201 5 15.8 5H8.2C7.07989 5 6.51984 5 6.09202 5.21799C5.71569 5.40973 5.40973 5.71569 5.21799 6.09202C5 6.51984 5 7.07989 5 8.2V15.8C5 16.9201 5 17.4802 5.21799 17.908C5.40973 18.2843 5.71569 18.5903 6.09202 18.782C6.51984 19 7.07989 19 8.2 19Z" stroke="#817D7D" stroke-width="2"/>
 </svg>
 `;
@@ -40,16 +40,50 @@ export const Logo = `<svg width="28" height="29" viewBox="0 0 28 29" fill="none"
 </svg>
 `;
 
+export const Background = `<svg width="524" height="524" viewBox="0 0 524 524" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="262" cy="262" r="262" fill="url(#paint0_linear_1_774)" fill-opacity="0.06"/>
+<defs>
+<linearGradient id="paint0_linear_1_774" x1="261.473" y1="-28.994" x2="262" y2="508" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
+`;
+
+export const Email = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5Z" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3 7L12 13L21 7" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+
+export const Produvtmenu = `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="48" height="48" rx="12" fill="#F8FAFC"/>
+<path d="M21 18H32" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 24H32" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 30H32" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 18V18.01" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 24V24.01" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 30V30.01" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+
+export const Productsquare = `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="48" height="48" rx="12" fill="white"/>
+<path d="M21 16H17C16.4477 16 16 16.4477 16 17V21C16 21.5523 16.4477 22 17 22H21C21.5523 22 22 21.5523 22 21V17C22 16.4477 21.5523 16 21 16Z" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31 16H27C26.4477 16 26 16.4477 26 17V21C26 21.5523 26.4477 22 27 22H31C31.5523 22 32 21.5523 32 21V17C32 16.4477 31.5523 16 31 16Z" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 26H17C16.4477 26 16 26.4477 16 27V31C16 31.5523 16.4477 32 17 32H21C21.5523 32 22 31.5523 22 31V27C22 26.4477 21.5523 26 21 26Z" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31 26H27C26.4477 26 26 26.4477 26 27V31C26 31.5523 26.4477 32 27 32H31C31.5523 32 32 31.5523 32 31V27C32 26.4477 31.5523 26 31 26Z" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+
 interface SvgIconProps {
-    svgCode: string;
-    className?: string;
-  }
-  const SvgIcon: React.FC<SvgIconProps> = ({ svgCode, className }) => {
-    return (
-        <div
-      className={className}
-      dangerouslySetInnerHTML={{ __html: svgCode }}
-    />
-  )
+  svgCode: string;
+  className?: string;
 }
+const SvgIcon: React.FC<SvgIconProps> = ({ svgCode, className }) => {
+  return (
+    <div className={className} dangerouslySetInnerHTML={{ __html: svgCode }} />
+  );
+};
 export default SvgIcon;
