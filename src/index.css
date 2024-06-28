@@ -7,3 +7,52 @@
 *{
     font-family: "inter", sans-serif;
 }
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+   ::-webkit-scrollbar-track {
+    background: #d1d5db;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+  /* Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   my_changes.patch
+        new file:   src/Page/Customer.jsx
+        new file:   src/Page/Dashboard.jsx
+        new file:   src/Page/Order.jsx
+        new file:   src/Page/Report.jsx
+
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+        both added:      src/App.jsx
+        both added:      src/Page/Product.jsx
+        both added:      src/_Component/Navbar.tsx
+        both added:      src/_Component/SideNav.jsx
+        both added:      src/index.css
+
+PS C:\Users\sheriff\Documents\Gadget-store-app> git status
+interactive rebase in progress; onto 33d83e3
+Last command done (1 command done):
+   pick a089c01 initial commit changes
+No commands remaining.
+You are currently rebasing branch 'master' on '33d83e3'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   my_changes.patch
+        modified:   src/App.jsx
+        new file:   src/Page/Customer.jsx
+        new file:   src/Page/Dashboard.jsx
+        modified:   src/Page/Login.jsx
+        new file:   src/Page/Order.jsx
+        modified:   src/Page/Product.jsx
+        new file:   src/Page/Report.jsx
+        modified:   src/_Component/Navbar.tsx
+        modified:   src/_Component/SideNav.jsx
+        modified:   src/index.css
+these are the files */

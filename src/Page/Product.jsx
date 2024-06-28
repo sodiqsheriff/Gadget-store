@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { NavigationBar } from '../_Component/Navbar';
 import { SideNav } from '../_Component/SideNav';
 import ChildComponent from '../_Component/ChildComponent';
@@ -8,7 +8,70 @@ import {Categories} from './Categories'; // Import the Categories component
 import { BsThreeDots } from 'react-icons/bs';
 import {Link} from "react-router-dom";
 
+
+const data = [
+  {
+    imageUrl: '../_assets/wactch.svg',
+    product: 'Apple MacBook Pro 17"',
+    brand: 'Silver',
+    stock: 'Laptop',
+    sales: '$2999',
+    price: '$3000',
+    status: true,
+  },
+  {
+    imageUrl: '../_assets/wactch.svg',
+    product: 'Microsoft Surface Pro',
+    brand: 'White',
+    stock: 'Laptop PC',
+    sales: '$1999',
+    price: '$3000',
+    status: false,
+  },
+  {
+    imageUrl: '../_assets/wactch.svg',
+    product: 'Magic Mouse 2',
+    brand: 'Black',
+    stock: 'Accessories',
+    sales: '$99',
+    price: '$3000',
+    status: false,
+  },
+];
+
 export const Product = () => {
+  const [statuses, setStatuses] = useState(data.map(item => item.status));
+  const [dropdownOpen, setDropdownOpen] = useState(Array(data.length).fill(false)); // Track dropdown state for each item
+  const dropdownRefs = useRef(data.map(() => React.createRef()));
+
+  const toggleStatus = index => {
+    setStatuses(prevStatuses =>
+      prevStatuses.map((status, i) => (i === index ? !status : status))
+    );
+  };
+
+  const toggleDropdown = index => {
+    setDropdownOpen(prevState =>
+      prevState.map((isOpen, i) => (i === index ? !isOpen : false))
+    );
+  };
+
+  const handleClickOutside = event => {
+    dropdownRefs.current.forEach((ref, index) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setDropdownOpen(prevState =>
+          prevState.map((isOpen, i) => (i === index ? false : isOpen))
+        );
+      }
+    });
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   const [showAllProducts, setShowAllProducts] = useState(true); // State to toggle between All Products and Categories
   const [activeLink, setActiveLink] = useState('All Products'); // State to track active navigation link
 
@@ -19,7 +82,7 @@ export const Product = () => {
 
   return (
     <>
-      <NavigationBar />
+      <NavigationBar pageTitle='Product' />
       <div className="flex flex-row">
         <SideNav />
         <div className="flex flex-col bg-[#F8FAFC] w-full">
@@ -94,8 +157,55 @@ export const Product = () => {
                   </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
-                  {/* Render your data for All Products */}
-                </Table.Body>
+                {data.map((item, index) => (
+                  <Table.Row key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                    <Table.Cell>
+                      <Checkbox />
+                    </Table.Cell>
+                    <Table.Cell className="flex items-center gap-7 whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                      <img src={item.imageUrl} alt={item.product} className="w-10 h-10 object-cover" />
+                      {item.product}
+                    </Table.Cell>
+                    <Table.Cell>{item.brand}</Table.Cell>
+                    <Table.Cell>{item.stock}</Table.Cell>
+                    <Table.Cell>{item.sales}</Table.Cell>
+                    <Table.Cell>{item.price}</Table.Cell>
+                    <Table.Cell>
+                      <div
+                        onClick={() => toggleStatus(index)}
+                        className={`relative w-11 h-6 cursor-pointer rounded-full ${
+                          statuses[index] ? 'bg-blue-600' : 'bg-gray-200'
+                        }`}
+                      >
+                        <div
+                          className={`absolute top-[2px] left-[2px] bg-white border border-blue-300 rounded-full h-5 w-5 transition-all ${
+                            statuses[index] ? 'translate-x-full' : ''
+                          }`}
+                        ></div>
+                      </div>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <div className="relative" ref={dropdownRefs.current[index]}>
+                        <button
+                          onClick={() => toggleDropdown(index)}
+                          className="focus:outline-none"
+                        >
+                          <BsThreeDots />
+                        </button>
+                        {dropdownOpen[index] && (
+                          <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10">
+                            <ul>
+                              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Action 1</li>
+                              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Action 2</li>
+                              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Action 3</li>
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
               </Table>
             </div>
           ) : (
