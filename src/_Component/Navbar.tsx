@@ -12,15 +12,15 @@ import { Link } from "react-router-dom";
 
 export function NavigationBar({ pageTitle }) {
   return (
-    <Navbar fluid rounded className=" border-b border-gray-300 shadow ">
+    <Navbar fluid rounded className=" border-b border-gray-300 shadow">
       <Navbar.Brand href="" className="lg:ps-6 ">
         <ChildComponent icon={Logo} />
         <span className="self-center whitespace-nowrap ps-2 text-2xl font-bold dark:text-white">
           Gadget
         </span>
       </Navbar.Brand>
-      <div className="flex justify-between h-full md:py-0 py-3 md:w-[38rem] border-l  border-">
-        <div className="flex flex-col ps-5">
+      <div className="flex justify-between h-full md:py-0 py-3 lg:w-[38rem] lg:border-l  border-">
+        <div className="flex flex-col md:ps-5">
           <h1 className="text-2xl font-bold">{pageTitle}</h1>
           <h3 className="hidden lg:block font-normal text-sm text-[#64748B]">
             Detailed information about your {pageTitle}
@@ -40,7 +40,6 @@ export function NavigationBar({ pageTitle }) {
           />
         </div>
         <NotificationBell />
-
         <Dropdown
           arrowIcon={false}
           inline
@@ -66,8 +65,8 @@ export function NavigationBar({ pageTitle }) {
         </Dropdown>
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse className=" lg:hidden">
-        <Navbar.Link href="/overview" active>
+      <Navbar.Collapse className=" md:hidden">
+        <Navbar.Link href="/dashboard" active>
           Dashboard
         </Navbar.Link>
         <Navbar.Link href="/report">Reports</Navbar.Link>
