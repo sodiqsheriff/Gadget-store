@@ -19,7 +19,7 @@ export function NavigationBar({ pageTitle }) {
           Gadget
         </span>
       </Navbar.Brand>
-      <div className="flex justify-between h-full md:py-0 py-3 md:w-[38rem] border-l  border-gray-300">
+      <div className="flex justify-between h-full md:py-0 py-3 md:w-[38rem] border-l  border-">
         <div className="flex flex-col ps-5">
           <h1 className="text-2xl font-bold">{pageTitle}</h1>
           <h3 className="hidden lg:block font-normal text-sm text-[#64748B]">
@@ -66,7 +66,7 @@ export function NavigationBar({ pageTitle }) {
         </Dropdown>
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse className="block md:hidden">
+      <Navbar.Collapse className=" lg:hidden">
         <Navbar.Link href="/overview" active>
           Dashboard
         </Navbar.Link>
