@@ -10,9 +10,21 @@ import { MdOutlineAnalytics } from "react-icons/md";
 import { TiShoppingCart } from "react-icons/ti";
 import { PiSuitcaseSimple } from "react-icons/pi";
 import { LuUser } from "react-icons/lu";
+
 export const SideNav = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const customTheme = {
+   "label": {
+      "base": "ml-3 flex-1 whitespace-nowrap text-left",
+      "icon": {
+        "base": "h-6 w-6 transition delay-0 ease-in-out",
+        "open": {
+          "on": "rotate-180",
+          "off": ""
+        }
+      }
+    },
+  };
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -20,65 +32,69 @@ export const SideNav = () => {
     <>
       <Sidebar
         aria-label="Default sidebar example"
-        className="hidden md:flex flex-col z-30 mt-14  top-0 left-0 h-full fixed border-r bg-white shadow-white shadow-2xl  max-w-[213px]"
+        className="hidden md:flex flex-col z-30 mt-14 p-0 top-0 left-0 h-full fixed border-r bg-transparent"
         style={{ backgroundColor: "white !important" }}
+       theme={customTheme}
       >
-        <Sidebar.Items className="px-5 max-w-[12rem]">
-          <Sidebar.ItemGroup>
+        <div className="bg-white h-full">
+          
+        <Sidebar.Items className="px-5 h-full max-h-[65%] w-full">
+          <Sidebar.ItemGroup >
             <Sidebar.Item
               href="/overview"
               icon={RiDashboardFill}
-              className="transition ease-out duration-300 transform hover:bg-custom-blue pl-3 font-medium text-[#817D7D]  active:font-semibold active:text-[#5B5AFB]"
+              className="transition ease-out duration-300 transform hover:bg-blue-600 hover:text-white pl-3 font-medium text-[#817D7D]  active:font-semibold active:text-[#5B5AFB]"
             >
               <Link to="/dashboard">Dashboard</Link>
             </Sidebar.Item>
             <Sidebar.Item
               href="#"
               icon={MdOutlineAnalytics}
-              className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-custom-blue active:font-semibold active:text-[#5B5AFB]"
+              className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
             >
               <Link to="/report">Report</Link>
             </Sidebar.Item>
             <Sidebar.Item
               href="#"
               icon={TiShoppingCart}
-              className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-custom-blue active:font-semibold active:text-[#5B5AFB]"
+              className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
             >
               <Link to="/order">Orders</Link>
             </Sidebar.Item>
             <Sidebar.Item
               href="#"
               icon={PiSuitcaseSimple}
-              className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-custom-blue active:font-semibold active:text-[#5B5AFB]"
+              className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
             >
               <Link to="/product">Products</Link>
             </Sidebar.Item>
             <Sidebar.Item
               href="#"
               icon={LuUser}
-              className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-custom-blue active:font-semibold active:text-[#5B5AFB]"
+              className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
             >
               <Link to="/customer">Customer</Link>
             </Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
-        <div class="flex flex-col justify-between mt-28 ps-5">
+        <div class="flex flex-col justify-between mt-28 ps-5 my-auto">
           <div class="mt-auto">
             <Link
               to="/settings"
-              class="flex items-center gap-5 p-2 transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-custom-blue active:font-semibold active:text-[#5B5AFB]"
+              class="flex items-center gap-5 p-2 transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
             >
               <IoSettingsOutline className="text-2xl text-gray-500" />
               <h1 class=" ">Settings</h1>
             </Link>
             <Link
               to=""
-              class="flex items-center gap-5 p-2 transition ease-out duration-300 transform hover:scale-105 pl-3 font-medium text-[#817D7D] hover:bg-custom-blue active:font-semibold active:text-[#5B5AFB]"
+              class="flex items-center gap-5 p-2 transition ease-out duration-300 transform hover:scale-105 pl-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
             >
               <IoLogOutOutline className="text-2xl text-gray-500" />
               <h1 class="/">Log Out</h1>
             </Link>
           </div>
+        </div>
         </div>
       </Sidebar>
     </>
