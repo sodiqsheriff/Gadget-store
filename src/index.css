@@ -7,6 +7,10 @@
 *{
     font-family: "inter", sans-serif;
     max-width: 100%;
+    transition: all ease-out .1s;
+}
+body{
+  background-color: #c3c5df37;
 }
 
 ::-webkit-scrollbar {

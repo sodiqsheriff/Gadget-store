@@ -11,13 +11,13 @@ export const Report = () => {
         <div className="py-3 px-6 :border-gray-700 w-full bg-[#F8FAFC]">
           <div className="flex justify-between py-5">
             <div className="flex flex-col">
-            <Dropdown label="31 Nov - 31 Dec" className="bg-white shadow-2xl border-gray-400 text-black font-bold" inline>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-           
+              <Dropdown label="31 Nov - 31 Dec" className="bg-white shadow-2xl border-gray-400 text-black font-bold" inline>
+                <Dropdown.Item>Dashboard</Dropdown.Item>
+                <Dropdown.Item>Settings</Dropdown.Item>
+                <Dropdown.Item>Earnings</Dropdown.Item>
+                <Dropdown.Item>Sign out</Dropdown.Item>
+              </Dropdown>
+
             </div>
             <div className="flex flex-col">
               <Button
