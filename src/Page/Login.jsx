@@ -30,7 +30,6 @@ export const Login =()=> {
         <Checkbox id="remember" />
         <Label htmlFor="remember" className='-mt-10'>Remember me</Label>
         </div>
-        <Link to="/reset" className='text-sm text-[#2563EB] font-semibold'>Forget Password?</Link>
       </div>
       <Link to='/dashboard' className='w-full text-center text-white font-semibold p-2 rounded-md bg-[#2563EB]'>
        Login 

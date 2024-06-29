@@ -8,7 +8,7 @@ type Notification = {
   timestamp: Date;
 };
 
-const NotificationBell: React.FC = () => {
+export const NotificationBell: React.FC = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
@@ -38,7 +38,7 @@ const NotificationBell: React.FC = () => {
         )}
       </button>
 {isDropdownVisible && (
-      <div className="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-lg">
+      <div className="absolute right-0 mt-2 w-72 mx-auto bg-white rounded-lg shadow-lg">
         <div className="py-2 px-5 pt-2 pb-4">
         <h2 className="text-2xl font-medium">Notifications</h2>
 
@@ -60,4 +60,3 @@ const NotificationBell: React.FC = () => {
   );
 };
 
-export default NotificationBell;

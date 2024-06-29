@@ -4,9 +4,9 @@ import { SideNav } from '../_Component/SideNav';
 import ChildComponent from '../_Component/ChildComponent';
 import { Produvtmenu, Productsquare } from '../_Component/Svg_icon.tsx'; // Adjust import based on your actual SVG component
 import { Checkbox, Table } from 'flowbite-react'; // Adjust based on your actual component library
-import {Categories} from './Categories'; // Import the Categories component
+import { Categories } from './Categories'; // Import the Categories component
 import { BsThreeDots } from 'react-icons/bs';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const data = [

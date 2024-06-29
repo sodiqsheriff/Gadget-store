@@ -77,6 +77,21 @@ export const Productsquare = `<svg width="48" height="48" viewBox="0 0 48 48" fi
 </svg>
 `;
 
+// export const Year = `  <svg
+//                       width="10" height="10"
+//                       aria-hidden="true"
+//                       xmlns="http://www.w3.org/2000/svg"
+//                       viewBox="0 0 10 6"
+//                     >
+//                       <path
+//                         stroke="currentColor"
+//                         strokeLinecap="round"
+//                         strokeLinejoin="round"
+//                         strokeWidth="2"
+//                         d="m1 1 4 4 4-4"
+//                       />
+//                     </svg>`;
+
 interface SvgIconProps {
   svgCode: string;
   className?: string;

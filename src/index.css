@@ -6,6 +6,7 @@
 
 *{
     font-family: "inter", sans-serif;
+    max-width: 100%;
 }
 
 ::-webkit-scrollbar {

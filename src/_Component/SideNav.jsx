@@ -20,8 +20,8 @@ export const SideNav = () => {
     <>
       <Sidebar
         aria-label="Default sidebar example"
-        className="hidden lg:flex flex-col h-full border-r bg-white shadow-white shadow-2xl  max-w-[16rem]"
-        style={{ backgroundColor: "#fff !importantr" }}
+        className="hidden md:flex flex-col z-30 mt-14  top-0 left-0 h-full fixed border-r bg-white shadow-white shadow-2xl  max-w-[213px]"
+        style={{ backgroundColor: "white !important" }}
       >
         <Sidebar.Items className="px-5 max-w-[12rem]">
           <Sidebar.ItemGroup>
@@ -62,7 +62,7 @@ export const SideNav = () => {
             </Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
-        <div class="flex flex-col justify-between h-full pt-24 ps-5">
+        <div class="flex flex-col justify-between mt-28 ps-5">
           <div class="mt-auto">
             <Link
               to="/settings"
