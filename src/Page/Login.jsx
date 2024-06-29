@@ -25,11 +25,9 @@ export const Login =()=> {
         </div>
         <TextInput id="password1" type="password" required />
       </div>
-      <div className="flex items-center gap-5 justify-between ">
-        <div className="">
+      <div className="flex items-center gap-1  ">
         <Checkbox id="remember" />
-        <Label htmlFor="remember" className='-mt-10'>Remember me</Label>
-        </div>
+        <Label htmlFor="remember" className=''>Remember me</Label>
       </div>
       <Link to='/dashboard' className='w-full text-center text-white font-semibold p-2 rounded-md bg-[#2563EB]'>
        Login 

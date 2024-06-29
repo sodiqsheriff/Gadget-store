@@ -36,9 +36,9 @@ export const SideNav = () => {
         style={{ backgroundColor: "white !important" }}
        theme={customTheme}
       >
-        <div className="bg-white h-full">
+        <div className="bg-white h-full max-h-[40em] flex flex-col justify-between">
           
-        <Sidebar.Items className="px-5 h-full max-h-[65%] w-full">
+        <Sidebar.Items className="px-5 w-full">
           <Sidebar.ItemGroup >
             <Sidebar.Item
               href="/overview"
@@ -47,13 +47,13 @@ export const SideNav = () => {
             >
               <Link to="/dashboard">Dashboard</Link>
             </Sidebar.Item>
-            <Sidebar.Item
+            {/* <Sidebar.Item
               href="#"
               icon={MdOutlineAnalytics}
               className="transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
             >
               <Link to="/report">Report</Link>
-            </Sidebar.Item>
+            </Sidebar.Item> */}
             <Sidebar.Item
               href="#"
               icon={TiShoppingCart}
@@ -87,11 +87,11 @@ export const SideNav = () => {
               <h1 class=" ">Settings</h1>
             </Link>
             <Link
-              to=""
+              to="/"
               class="flex items-center gap-5 p-2 transition ease-out duration-300 transform hover:scale-105 pl-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
             >
               <IoLogOutOutline className="text-2xl text-gray-500" />
-              <h1 class="/">Log Out</h1>
+              <h1 class="">Log Out</h1>
             </Link>
           </div>
         </div>

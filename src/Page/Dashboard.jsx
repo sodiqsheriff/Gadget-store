@@ -239,7 +239,7 @@ export const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="relative overflow-x-auto max-w-[70rem] m-4 p-4 bg-white sm:rounded-lg">
+        <div className="relative overflow-x-auto w-full  m-4 p-4 bg-white sm:rounded-lg">
           <Table className="w-full bg-white font-semibold text-sm text-left rtl:text-right text-[#94A3B8] ">
             <Table.Head className="bg-gray-300 text-gray-400 capitalize font-semibold">
 

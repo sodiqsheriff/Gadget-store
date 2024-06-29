@@ -15,7 +15,7 @@ export function NavigationBar({ pageTitle }) {
           Gadget
         </span>
       </Navbar.Brand>
-      <div className="flex justify-between h-full md:py-0 py-3 max-w-screen lg:w-[38rem] lg:border-l  border-">
+      <div className="flex justify-between h-full md:py-0 py-3 max-w-screen lg:w-[38rem]">
         <div className="flex flex-col lg:ps-5">
           <h1 className="text-2xl font-bold">{pageTitle}</h1>
           <h3 className="hidden lg:block font-normal text-sm text-[#64748B]">
