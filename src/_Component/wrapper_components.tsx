@@ -10,7 +10,7 @@ export const Wrapper = ({children, pageTitle}) => {
             <NavigationBar pageTitle= {pageTitle} />
             <div className="flex flex-wrap">
                 <SideNav />
-                <div className="flex flex-col bg-[] w-full z-5 lg:ml-[250px] lg:mt-16  pt-5 px-4">
+                <div className="flex flex-col bg-[] w-full z-5 md:ml-[] lg:ml-[250px] lg:mt-16  pt-5 px-4">
                     {children}
                 </div>
             </div>

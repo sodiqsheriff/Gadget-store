@@ -32,7 +32,7 @@ export const SideNav = () => {
     <>
       <Sidebar
         aria-label="Default sidebar example"
-        className="hidden md:flex flex-col z-30 mt-14 mr-0 p-0 top-0 left-0 h-full fixed border-r bg-transparent"
+        className="hidden lg:flex flex-col z-30 mt-14 mr-0 p-0 top-0 left-0 h-full fixed border-r bg-transparent"
         style={{ backgroundColor: "white !important" }}
        theme={customTheme}
       >
