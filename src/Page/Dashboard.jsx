@@ -1,11 +1,9 @@
 import React, { useState, useRef } from "react";
-import { NavigationBar } from "../_Component/Navbar";
-import { SideNav } from "../_Component/SideNav";
 import { Link } from "react-router-dom";
 import { Avatar, Dropdown } from "flowbite-react";
-import { Checkbox, Table } from "flowbite-react"; // Adjust based on your actual component library
-import { BsThreeDots } from "react-icons/bs";
-import { BiEdit, BiStreetView } from "react-icons/bi";
+import {  Table } from "flowbite-react"; // Adjust based on your actual component library
+import { BiEdit } from "react-icons/bi";
+import { transactions } from "../_data/test_data"
 import { LuView } from "react-icons/lu";
 import { IconButton } from "../_Component/components";
 import { Wrapper } from "../_Component/wrapper_components";
@@ -19,61 +17,6 @@ export const Dashboard = () => {
     setActiveTab(tab); // Update active tab state
   };
 
-  const transactions = [
-    {
-      id: 1,
-      orderId: "SKN1200",
-      product: "Watch Nike Series 7",
-      customer: "Robert Fox",
-      email: "olaemma4213@gmail.com",
-      date: "01.01.2024",
-      status: "pending",
-      totalPrice: "₦399.00",
-    },
-    {
-      id: 2,
-      orderId: "SKN1201",
-      product: "Watch Nike Series 7",
-      customer: "Robert Fox",
-      email: "blazeemperor@gmail.com",
-      date: "01.01.2024",
-      status: "completed",
-      totalPrice: "₦399.00",
-    },
-    {
-      id: 3,
-      orderId: "SKN1202",
-      product: "Watch Nike Series 7",
-      customer: "Robert Fox",
-      email: "olaemma4213@gmail.com",
-
-      date: "01.01.2024",
-      status: "canceled",
-      totalPrice: "₦399.00",
-    },
-    {
-      id: 4,
-      orderId: "SKN1203",
-      product: "Watch Nike Series 7",
-      customer: "Robert Fox",
-      date: "01.01.2024",
-      email: "olaemma4213@gmail.com",
-
-      status: "pending",
-      totalPrice: "₦399.00",
-    },
-    {
-      id: 5,
-      orderId: "SKN1204",
-      product: "Watch Nike Series 7",
-      customer: "Robert Fox",
-      date: "01.01.2024",
-      status: "pending",
-      email: "olaemma4213@gmail.com",
-
-      totalPrice: "₦399.00",
-    },
-  ];
 
   // State to manage toggling the status color
   const [statusColors, setStatusColors] = useState({
@@ -98,16 +41,8 @@ export const Dashboard = () => {
 
   return (
     <>
-      {/* <NavigationBar pageTitle="Overview" />
-      <div className="flex flex-wrap">
-        <SideNav />
-        <div className="flex flex-col bg-[] w-full z-5 lg:ml-[250px] lg:mt-16 mt-28p pt-5">
-          
-        </div>
-      </div> */}
-
-      <Wrapper>
-        <div class="py-3 px-6 :border-gray-700 ">
+      <Wrapper pageTitle="Overview">
+        <div class="py-3  mt-28 md:mt-0">
           <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 ">
             <div class="flex items-center gap-4 h-24 pl-6 rounded-lg bg-white shadow-sm">
               <div class="flex items-center justify-center  bg-[#F8FAFC] w-12 h-12 rounded-lg ">
@@ -164,9 +99,7 @@ export const Dashboard = () => {
                     Recent Orders
                   </h1>
                   <div className="flex gap-2 items-center">
-                    <h1 className="font-bold text-lg text-[#0F172A]">
-                      5000+
-                    </h1>
+                    <h1 className="font-bold text-lg text-[#0F172A]">5000+</h1>
                   </div>
                 </div>
                 <div className="relative max-w-sm">
@@ -203,12 +136,8 @@ export const Dashboard = () => {
                     User activity
                   </h1>
                   <div className="flex gap-2 items-center">
-                    <h1 className="font-bold text-lg text-[#0F172A]">
-                      10,320
-                    </h1>
-                    <h1 className="text-xs font-medium text-[#ED4F9D]">
-                      -20%
-                    </h1>
+                    <h1 className="font-bold text-lg text-[#0F172A]">10,320</h1>
+                    <h1 className="text-xs font-medium text-[#ED4F9D]">-20%</h1>
                   </div>
                 </div>
                 <Link
@@ -239,38 +168,40 @@ export const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="relative overflow-x-auto w-full  m-4 p-4 bg-white sm:rounded-lg">
+        <div className="relative overflow-x-auto   bg-white sm:rounded-lg">
           <Table className="w-full bg-white font-semibold text-sm text-left rtl:text-right text-[#94A3B8] ">
             <Table.Head className="bg-gray-300 text-gray-400 capitalize font-semibold">
-
               <Table.HeadCell>
                 <div className="flowbite-table-head text-center">Order ID</div>
               </Table.HeadCell>
               <Table.HeadCell>
-                <div className="flowbite-table-head text-center">Order Date</div>
+                <div className="flowbite-table-head text-center">
+                  Order Date
+                </div>
               </Table.HeadCell>
               <Table.HeadCell>
                 <div className="flowbite-table-head text-center">Customer</div>
               </Table.HeadCell>
               <Table.HeadCell>
-                <div className="flowbite-table-head text-center">Delivery Date</div>
+                <div className="flowbite-table-head text-center">
+                  Delivery Date
+                </div>
               </Table.HeadCell>
               <Table.HeadCell>
                 <div className="flowbite-table-head text-center">Status</div>
               </Table.HeadCell>
               <Table.HeadCell>
-                <div className="flowbite-table-head text-center">Total price</div>
+                <div className="flowbite-table-head text-center">
+                  Total price
+                </div>
               </Table.HeadCell>
               <Table.HeadCell>
-                <div className="flowbite-table-head text-center">
-                  Action
-                </div>
+                <div className="flowbite-table-head text-center">Action</div>
               </Table.HeadCell>
             </Table.Head>
             <Table.Body className="">
               {transactions.map((transaction) => (
                 <Table.Row key={transaction.id} className="border-b p-10">
-
                   <Table.Cell className="px-4 py-2 font-normal">
                     {transaction.orderId}
                   </Table.Cell>
@@ -278,26 +209,21 @@ export const Dashboard = () => {
                     {transaction.date}
                   </Table.Cell>
                   <Table.Cell className="px-4 py-2 flex gap-4 items-center">
-                    <Avatar
-                      className=""
-                      img={""}
-                      rounded
-                    />
+                    <Avatar className="" img={""} rounded />
                     <div className="flex flex-col">
-                      <span>
-                        {transaction.customer}
-                      </span>
-                      <span className="text-xs">
-                        {transaction.email}
-                      </span>
-
+                      <span>{transaction.customer}</span>
+                      <span className="text-xs">{transaction.email}</span>
                     </div>
                   </Table.Cell>
                   <Table.Cell className="px-4 py-2">
                     {transaction.date}
                   </Table.Cell>
                   <Table.Cell>
-                    <div className={`block mx-auto w-fit px-4 rounded-full py-1 bg-blue-100 text-blue-500 ${statusColors[transaction.status]}`}>
+                    <div
+                      className={`block mx-auto w-fit px-4 rounded py-1 bg-blue-100 text-blue-500 ${
+                        statusColors[transaction.status]
+                      }`}
+                    >
                       {transaction.status}
                     </div>
                   </Table.Cell>
@@ -305,15 +231,17 @@ export const Dashboard = () => {
                   <Table.Cell className="px-4 py-2">
                     {transaction.totalPrice}
                   </Table.Cell>
-                  <Table.Cell className="flex gap-2">
+                  <Table.Cell className="flex gap-0 ">
                     <IconButton
-                      className={"bg-blue-200 text-blue-800 border-0"}
+                      className={"bg-blue-200 w-full text-blue-800 border-0"}
                       child={<BiEdit size={20} />}
                       description={"Update Order Status"}
                     />
 
                     <IconButton
-                      className={"bg-green-200 text-green-800 border-0 hover:bg-green-700"}
+                      className={
+                        "bg-green-200 w-full text-green-800 border-0 hover:bg-green-700"
+                      }
                       child={<LuView size={20} />}
                       description={"View Order Details"}
                     />

@@ -5,35 +5,19 @@ import { Checkbox, Table } from 'flowbite-react'; // Adjust based on your actual
 import {NavigationBar} from "../_Component/Navbar";
 import {SideNav} from "../_Component/SideNav";
 import {Link } from "react-router-dom";
-const categoriesData = [
-  {
-    imageUrl: '../_assets/category1.svg',
-    category: 'Category 1',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    productsCount: 20,
-  },
-  {
-    imageUrl: '../_assets/category2.svg',
-    category: 'Category 2',
-    description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    productsCount: 15,
-  },
-  // Add more categories as needed
-];
+import { Wrapper } from '../_Component/wrapper_components';
+import { categoriesData } from '../_data/test_data';
 
 export const Categories = ({toggleView}) => {
   return (
     <>
-      <NavigationBar />
-      <div className="flex">
-        <SideNav />
-        <div className="flex flex-col bg-[#F8FAFC] w-full">
-        <div className="text-sm font-medium sm:pt-5 md:pt-0 text-center text-gray-500 border-b border-gray-200 :text-gray-400 :border-gray-700">
+   <Wrapper pageTitle="Categories">
+   <div className="text-sm font-medium  mt-28 bg-white md:pt-0 text-center text-gray-500 border-b border-gray-200 :text-gray-400 :border-gray-700">
         <ul className="flex flex-wrap">
           <li className="me-2">
             <Link
               to="/product"
-              className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300`}
+              className={`inline-block p-4 border-b-2  rounded-t-lg hover:text-gray-600 hover:border-gray-300 active:text-blue-500 active:border-b-2 active:border-blue-500`}
               onClick={() => toggleView('All Products')}
             >
               All Products
@@ -42,7 +26,7 @@ export const Categories = ({toggleView}) => {
           <li className="me-2">
             <Link
               to="/categories"
-              className={`inline-block p-4 text-blue-600 border-b-2 border-transparent rounded-t-lg active:text-blue-500 active:border-blue-500`}
+              className={`inline-block p-4 text-blue-600  rounded-t-lg active:text-blue-500 active:border-b-2 active:border-blue-500 border-b-2 border-blue-500`}
               aria-current="page"
             >
               Categories
@@ -50,7 +34,7 @@ export const Categories = ({toggleView}) => {
           </li>
         </ul>
       </div>
-      <div className="relative overflow-x-auto max-w-[70rem] m-5 p-4 bg-white sm:rounded-lg">
+      <div className="relative overflow-x-auto  mt-5 p-4 bg-white rounded-xl">
       <Table>
         <Table.Head>
           <Table.HeadCell>
@@ -74,8 +58,7 @@ export const Categories = ({toggleView}) => {
         </Table.Body>
       </Table>
     </div>
-    </div>
-      </div>
+   </Wrapper>
     </>
   );
 };

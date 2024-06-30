@@ -9,6 +9,7 @@ import { Order } from "./Page/Order.jsx";
 import { Report } from "./Page/Report.jsx";
 import { Customer } from "./Page/Customer.jsx";
 import { NotFound } from "./_Component/NotFound.jsx"; // Ensure this component exists
+import { AddProduct } from "./Page/AddProduct.jsx";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/product" element={<Product />} />
         <Route path="/order" element={<Order />} />
         <Route path="/report" element={<Report />} />
+        <Route path="/addproduct" element={<AddProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

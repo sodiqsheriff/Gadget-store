@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { NavigationBar } from "../_Component/Navbar";
-import { SideNav } from "../_Component/SideNav";
 import { LuFilter, LuView } from "react-icons/lu";
-import { BiEdit, BiExport } from "react-icons/bi";
-import { Button, Table, Checkbox, Avatar } from "flowbite-react";
-import { BsThreeDots } from "react-icons/bs";
+import { BiEdit } from "react-icons/bi";
+import { Button, Table,  Avatar } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { Wrapper } from "../_Component/wrapper_components";
 import { IconButton } from "../_Component/components";
+import { transactions } from "../_data/test_data.js"
 
 export const Order = () => {
   const [activeTab, setActiveTab] = useState("pending"); // State to track active tab
@@ -15,59 +13,6 @@ export const Order = () => {
   const handleTabClick = (tab) => {
     setActiveTab(tab); // Update active tab state
   };
-
-  const transactions = [
-    {
-      id: 1,
-      orderId: "SKN1200",
-      email: "sodiqsheriff9@gmail.com",
-      product: "Watch Nike Series 7",
-      customer: "Robert Fox",
-      date: "01.01.2024",
-      status: "pending",
-      totalPrice: "₦399.00",
-    },
-    {
-      id: 2,
-      orderId: "SKN1201",
-      email: "sodiqsheriff9@gmail.com",
-      product: "Watch Nike Series 7",
-      customer: "Robert Fox",
-      date: "01.01.2024",
-      status: "completed",
-      totalPrice: "₦399.00",
-    },
-    {
-      id: 3,
-      orderId: "SKN1202",
-      email: "sodiqsheriff9@gmail.com",
-      product: "Watch Nike Series 7",
-      customer: "Robert Fox",
-      date: "01.01.2024",
-      status: "canceled",
-      totalPrice: "₦399.00",
-    },
-    {
-      id: 4,
-      orderId: "SKN1203",
-      product: "Watch Nike Series 7",
-      email: "sodiqsheriff9@gmail.com",
-      customer: "Robert Fox",
-      date: "01.01.2024",
-      status: "pending",
-      totalPrice: "₦399.00",
-    },
-    {
-      id: 5,
-      orderId: "SKN1204",
-      product: "Watch Nike Series 7",
-      email: "sodiqsheriff9@gmail.com",
-      customer: "Robert Fox",
-      date: "01.01.2024",
-      status: "pending",
-      totalPrice: "₦399.00",
-    },
-  ];
 
   // State to manage toggling the status color
   const [statusColors, setStatusColors] = useState({
@@ -92,16 +37,16 @@ export const Order = () => {
 
   return (
     <>
-      <Wrapper>
-        <div className="flex flex-row w-full px-5 bg-white justify-between ">
+      <Wrapper pageTitle="Order">
+        <div className="flex flex-row w-full px-5 bg-white justify-between mt-28">
           <div className="text-sm font-medium sm:pt-5 md:pt-0 text-center text-gray-500 border-b border-gray-200 ">
-            <ul className="flex flex-col md:grid grid-cols-3 lg:grid-cols-5">
+            <ul className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
               <li className="me-2">
                 <Link
                   to="#"
                   onClick={() => handleTabClick("all")}
                   className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 ${
-                    activeTab === "all" ? "text-gray-300 border-gray-300" : ""
+                    activeTab === "all" ? "text-gray-300 border-gray-300 active:border-b-2 active:text-blue-600 active:border-blue-600" : ""
                   }`}
                 >
                   All Orders
@@ -113,7 +58,7 @@ export const Order = () => {
                   onClick={() => handleTabClick("pending")}
                   className={`inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg ${
                     activeTab === "pending"
-                      ? "active text-blue-500 border-blue-500"
+                      ? "active text-blue-500 border-b border-blue-500 active:border-b-2 active:text-blue-600 active:border-blue-600"
                       : ""
                   }`}
                   aria-current={activeTab === "pending" ? "page" : undefined}
@@ -127,7 +72,7 @@ export const Order = () => {
                   onClick={() => handleTabClick("completed")}
                   className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 ${
                     activeTab === "completed"
-                      ? "text-gray-300 border-gray-300"
+                      ? "text-gray-300 border-gray-300 active:border-b-2 active:text-blue-600 active:border-blue-600"
                       : ""
                   }`}
                 >
@@ -140,7 +85,7 @@ export const Order = () => {
                   onClick={() => handleTabClick("canceled")}
                   className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 ${
                     activeTab === "canceled"
-                      ? "text-gray-300 border-gray-300"
+                      ? "text-gray-300 border-gray-300 active:border-b-2 active:text-blue-600 active:border-blue-600"
                       : ""
                   }`}
                 >
@@ -155,10 +100,7 @@ export const Order = () => {
               <LuFilter className="text-lg" />
               Filter
             </Button>
-            <Button className="flex gap-5 items-center text-[#64748B] hover:text-white border border-[#E2E8F0] hover:border-2 focus:ring-4 bg-white focus:outline-none  font-semibold rounded-lg text-sm text-center me-2 ">
-              <BiExport className="text-lg" />
-              Exports
-            </Button>
+          
           </div>
         </div>
         <div className="relative overflow-x-auto max-w-[70rem] m-4 p-4 bg-white sm:rounded-lg">

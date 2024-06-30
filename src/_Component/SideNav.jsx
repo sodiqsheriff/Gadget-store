@@ -32,11 +32,11 @@ export const SideNav = () => {
     <>
       <Sidebar
         aria-label="Default sidebar example"
-        className="hidden md:flex flex-col z-30 mt-14 p-0 top-0 left-0 h-full fixed border-r bg-transparent"
+        className="hidden md:flex flex-col z-30 mt-14 mr-0 p-0 top-0 left-0 h-full fixed border-r bg-transparent"
         style={{ backgroundColor: "white !important" }}
        theme={customTheme}
       >
-        <div className="bg-white h-full max-h-[40em] flex flex-col justify-between">
+        <div className="bg-white h-full max-h-[33em] flex flex-col justify-between">
           
         <Sidebar.Items className="px-5 w-full">
           <Sidebar.ItemGroup >
@@ -77,8 +77,8 @@ export const SideNav = () => {
             </Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
-        <div class="flex flex-col justify-between mt-28 ps-5 my-auto">
-          <div class="mt-auto">
+        <div class="flex flex-col justify-between ps-5 mt-auto">
+          <div class="">
             <Link
               to="/settings"
               class="flex items-center gap-5 p-2 transition ease-out duration-300 transform hover:scale-105 pl-3 my-3 font-medium text-[#817D7D] hover:bg-blue-600 hover:text-white active:font-semibold active:text-[#5B5AFB]"
