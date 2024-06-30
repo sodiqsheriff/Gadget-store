@@ -1,4 +1,4 @@
-
+import image from "../_assets/wactch.svg";
 export const transactions = [
     {
       id: 1,
@@ -46,3 +46,47 @@ export const transactions = [
       totalPrice: "₦399.00",
     },
   ];
+  export const data = [
+    {
+      imageUrl: image,
+      product: 'Apple MacBook Pro 17"',
+      brand: "Silver",
+      stock: "Laptop",
+      sales: "$2999",
+      price: "$3000",
+      status: true,
+    },
+    {
+      imageUrl: image,
+      product: "Microsoft Surface Pro",
+      brand: "White",
+      stock: "Laptop PC",
+      sales: "$1999",
+      price: "$3000",
+      status: false,
+    },
+    {
+      imageUrl: image,
+      product: "Magic Mouse 2",
+      brand: "Black",
+      stock: "Accessories",
+      sales: "$99",
+      price: "$3000",
+      status: false,
+    },
+  ];
+  
+ export const categoriesData = [
+    {
+      category: '001',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      productsCount: 20,
+    },
+    {
+      category: '02',
+      description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      productsCount: 15,
+    },
+    // Add more categories as needed
+  ];
+  

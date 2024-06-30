@@ -15,8 +15,8 @@ export function NavigationBar({ pageTitle }) {
           Gadget
         </span>
       </Navbar.Brand>
-      <div className="flex justify-between h-full md:py-0 py-3 max-w-screen lg:w-[38rem] lg:border-l  border-">
-        <div className="flex flex-col lg:ps-5">
+      <div className="flex justify-between h-full md:py-0 py-3 max-w-screen lg:w-[39rem]">
+        <div className="flex flex-col lg:ps-0">
           <h1 className="text-2xl font-bold">{pageTitle}</h1>
           <h3 className="hidden lg:block font-normal text-sm text-[#64748B]">
             Detailed information about your {pageTitle}
@@ -35,7 +35,7 @@ export function NavigationBar({ pageTitle }) {
             placeholder="Search Anything..."
           />
         </div>
-        <div className="hidden md:block">
+        <div className="">
         <NotificationBell />
         </div>
         <Dropdown
@@ -61,7 +61,7 @@ export function NavigationBar({ pageTitle }) {
         <Navbar.Link href="/dashboard"  className="active:bg-blue-600 active:text-white">
           Dashboard
         </Navbar.Link>
-        <Navbar.Link href="/report" className="active:bg-blue-600 active:text-white">Reports</Navbar.Link>
+        {/* <Navbar.Link href="/report" className="active:bg-blue-600 active:text-white">Reports</Navbar.Link> */}
         <Navbar.Link href="order" className="active:bg-blue-600 active:text-white">Orders</Navbar.Link>
         <Navbar.Link href="/product" className="active:bg-blue-600 active:text-white">Products</Navbar.Link>
         <Navbar.Link href="/customer" className="active:bg-blue-600 active:text-white">Customer</Navbar.Link>
