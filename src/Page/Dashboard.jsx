@@ -231,7 +231,7 @@ export const Dashboard = () => {
                   <Table.Cell className="px-4 py-2">
                     {transaction.totalPrice}
                   </Table.Cell>
-                  <Table.Cell className="flex gap-0 ">
+                  <Table.Cell className="flex gap-2 ">
                     <IconButton
                       className={"bg-blue-200 w-full text-blue-800 border-0"}
                       child={<BiEdit size={20} />}
