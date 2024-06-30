@@ -94,7 +94,7 @@ export const Customer = () => {
                       : ""
                   }`}
                 >
-                  Activated
+                  Active
                 </Link>
               </li>
               <li className="me-2">

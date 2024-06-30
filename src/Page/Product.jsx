@@ -150,12 +150,14 @@ export const Product = () => {
                       </Table.Cell>
                    
                       <Table.Cell className="flex gap-2 ">
+                        <Link to='/editproduct'>
                     <IconButton
                       className={"bg-blue-200 w-full text-blue-800 border-0"}
                       child={<BiEdit size={20} />}
                       description={"Update Order Status"}
                     />
-
+                    </Link>
+                <Link to='/viewproduct'>
                     <IconButton
                       className={
                         "bg-green-200 w-full text-green-800 border-0 hover:bg-green-700"
@@ -163,6 +165,7 @@ export const Product = () => {
                       child={<LuView size={20} />}
                       description={"View Order Details"}
                     />
+                    </Link>
                   </Table.Cell>
                     </Table.Row>
                   ))}
