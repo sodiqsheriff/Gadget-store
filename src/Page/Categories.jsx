@@ -1,18 +1,48 @@
 // Categories.js
 
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import { Checkbox, Table } from 'flowbite-react'; // Adjust based on your actual component library
 import {NavigationBar} from "../_Component/Navbar";
 import {SideNav} from "../_Component/SideNav";
 import {Link } from "react-router-dom";
 import { Wrapper } from '../_Component/wrapper_components';
 import { categoriesData } from '../_data/test_data';
+import { data } from "../_data/test_data.js";
+
 
 export const Categories = ({toggleView}) => {
+  const [statuses, setStatuses] = useState(data.map((item) => item.status));
+  const [dropdownOpen, setDropdownOpen] = useState(
+    Array(data.length).fill(false)
+  ); // Track dropdown state for each item
+  const dropdownRefs = useRef(data.map(() => React.createRef()));
+
+  const toggleStatus = (index) => {
+    setStatuses((prevStatuses) =>
+      prevStatuses.map((status, i) => (i === index ? !status : status))
+    );
+  };
+
+  const toggleDropdown = (index) => {
+    setDropdownOpen((prevState) =>
+      prevState.map((isOpen, i) => (i === index ? !isOpen : false))
+    );
+  };
+
+  const handleClickOutside = (event) => {
+    dropdownRefs.current.forEach((ref, index) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setDropdownOpen((prevState) =>
+          prevState.map((isOpen, i) => (i === index ? false : isOpen))
+        );
+      }
+    });
+  };
+
   return (
     <>
    <Wrapper pageTitle="Categories">
-   <div className="text-sm font-medium  mt-28 bg-white md:pt-0 text-center text-gray-500 border-b border-gray-200 :text-gray-400 :border-gray-700">
+   <div className="text-sm font-medium  mt-28 md:mt-0 bg-white md:pt-0 text-center text-gray-500 border-b border-gray-200 :text-gray-400 :border-gray-700">
         <ul className="flex flex-wrap">
           <li className="me-2">
             <Link
@@ -43,6 +73,7 @@ export const Categories = ({toggleView}) => {
           <Table.HeadCell>Category</Table.HeadCell>
           <Table.HeadCell>Description</Table.HeadCell>
           <Table.HeadCell>Products Count</Table.HeadCell>
+          <Table.HeadCell>Status</Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
           {categoriesData.map((item, index) => (
@@ -53,6 +84,20 @@ export const Categories = ({toggleView}) => {
               <Table.Cell>{item.category}</Table.Cell>
               <Table.Cell>{item.description}</Table.Cell>
               <Table.Cell>{item.productsCount}</Table.Cell>
+              <Table.Cell>
+              <div
+                          onClick={() => toggleStatus(index)}
+                          className={`relative w-11 h-6 cursor-pointer rounded-full ${
+                            statuses[index] ? "bg-blue-600" : "bg-gray-200"
+                          }`}
+                        >
+                          <div
+                            className={`absolute top-[2px] left-[2px] bg-white border border-blue-300 rounded-full h-5 w-5 transition-all ${
+                              statuses[index] ? "translate-x-full" : ""
+                            }`}
+                          ></div>
+                        </div>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

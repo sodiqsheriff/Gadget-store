@@ -1,15 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import { NavigationBar } from "../_Component/Navbar";
-import { SideNav } from "../_Component/SideNav";
-import ChildComponent from "../_Component/ChildComponent";
-import { Produvtmenu, Productsquare } from "../_Component/Svg_icon.tsx"; // Adjust import based on your actual SVG component
 import { Button, Checkbox, Table } from "flowbite-react"; // Adjust based on your actual component library
 import { Categories } from "./Categories"; // Import the Categories component
-import { BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Wrapper } from "../_Component/wrapper_components.tsx";
 import { data } from "../_data/test_data.js";
 import { FaPlus } from "react-icons/fa";
+import { BiEdit } from "react-icons/bi";
+import { LuView } from "react-icons/lu";
+import { IconButton } from "../_Component/components.jsx";
 
 export const Product = () => {
   const [statuses, setStatuses] = useState(data.map((item) => item.status));
@@ -57,7 +55,7 @@ export const Product = () => {
   return (
     <>
       <Wrapper pageTitle="Product">
-        <div className="flex flex-col bg-[#F8FAFC] w-full pt-28">
+        <div className="flex flex-col bg-[#F8FAFC] w-full pt-28 md:pt-0">
           <div className="flex flex-row w-full px-5 bg-white justify-between shadow">
             <div className="text-sm font-medium sm:pt-5 md:pt-0 text-center text-gray-500 border-b border-gray-200 :text-gray-400 :border-gray-700">
               <ul className="flex flex-wrap">
@@ -90,28 +88,27 @@ export const Product = () => {
               </ul>
             </div>
             <div className="flex flex-col pt-5 md:flex-row md:pt-0 items-center gap-5">
+              <Link to='/addproduct'>
               <Button className=" items-center text-white bg-[#2563EB] text-lg hover:bg-blue-800 font-medium rounded-lg   flex">
                 <FaPlus className="pr-2 text-2xl"/>
                 AddProduct
               </Button>
+              </Link>
             </div>
           </div>
           {showAllProducts ? (
             <div className="relative overflow-x-auto max-w-[70rem] m-5 p-4 bg-white sm:rounded-lg">
-              <Table>
+              <Table className="text-center">
                 <Table.Head>
-                  <Table.HeadCell>
-                    <Checkbox />
-                  </Table.HeadCell>
                   <Table.HeadCell>Product</Table.HeadCell>
-                  <Table.HeadCell>Brand</Table.HeadCell>
-                  <Table.HeadCell>Stock</Table.HeadCell>
+                  <Table.HeadCell>Category</Table.HeadCell>
+                  <Table.HeadCell>Quantity</Table.HeadCell>
+                  <Table.HeadCell>Sold</Table.HeadCell>
                   <Table.HeadCell>Sales</Table.HeadCell>
                   <Table.HeadCell>Price</Table.HeadCell>
                   <Table.HeadCell>Status</Table.HeadCell>
-                  <Table.HeadCell>
-                    <BsThreeDots />
-                  </Table.HeadCell>
+                  <Table.HeadCell>Action</Table.HeadCell>
+                  
                   <Table.HeadCell>
                     <span className="sr-only">Actions</span>
                   </Table.HeadCell>
@@ -125,7 +122,7 @@ export const Product = () => {
                       <Table.Cell>
                         <Checkbox />
                       </Table.Cell>
-                      <Table.Cell className="flex items-center gap-7 whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                      <Table.Cell className="flex items-center text-xs whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         <img
                           src={item.imageUrl}
                           alt={item.product}
@@ -133,9 +130,9 @@ export const Product = () => {
                         />
                         {item.product}
                       </Table.Cell>
-                      <Table.Cell>{item.brand}</Table.Cell>
-                      <Table.Cell>{item.stock}</Table.Cell>
-                      <Table.Cell>{item.sales}</Table.Cell>
+                      <Table.Cell  >{item.category}</Table.Cell>
+                      <Table.Cell>{item.quantity}</Table.Cell>
+                      <Table.Cell>{item.sold}</Table.Cell>
                       <Table.Cell>{item.price}</Table.Cell>
                       <Table.Cell>
                         <div
@@ -151,34 +148,22 @@ export const Product = () => {
                           ></div>
                         </div>
                       </Table.Cell>
-                      <Table.Cell>
-                        <div
-                          className="relative"
-                          ref={dropdownRefs.current[index]}
-                        >
-                          <button
-                            onClick={() => toggleDropdown(index)}
-                            className="focus:outline-none"
-                          >
-                            <BsThreeDots />
-                          </button>
-                          {dropdownOpen[index] && (
-                            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10">
-                              <ul>
-                                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                  Action 1
-                                </li>
-                                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                  Action 2
-                                </li>
-                                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                  Action 3
-                                </li>
-                              </ul>
-                            </div>
-                          )}
-                        </div>
-                      </Table.Cell>
+                   
+                      <Table.Cell className="flex gap-2 ">
+                    <IconButton
+                      className={"bg-blue-200 w-full text-blue-800 border-0"}
+                      child={<BiEdit size={20} />}
+                      description={"Update Order Status"}
+                    />
+
+                    <IconButton
+                      className={
+                        "bg-green-200 w-full text-green-800 border-0 hover:bg-green-700"
+                      }
+                      child={<LuView size={20} />}
+                      description={"View Order Details"}
+                    />
+                  </Table.Cell>
                     </Table.Row>
                   ))}
                 </Table.Body>
