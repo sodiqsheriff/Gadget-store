@@ -12,6 +12,7 @@ export const AddProduct = () => {
   const [productName, setProductName] = useState('');
   const [productCategory, setProductCategory] = useState('');
   const [productDescription, setProductDescription] = useState('');
+  const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
   const [productDiscount, setProductDiscount] = useState('');
   const [previewSrc, setPreviewSrc] = useState('');
@@ -41,9 +42,8 @@ export const AddProduct = () => {
   return (
     <>
      <Wrapper pageTitle='AddProduct'>
-    
-     <div className="w-full h-[calc(100%-1rem)] max-h-full">
-      <div className="relative mt-5 p-4 w-full max-w-[38rem] max-h-full">
+     <div className=" w-full h-[calc(100%-1rem)] max-h-full">
+      <div className="relative  p-4 w-full max-w-[38rem] max-h-full">
         <div className="relative bg-white rounded-lg shadow">
           <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
             <h3 className="text-xl font-semibold text-gray-900">Product information</h3>
@@ -72,7 +72,7 @@ export const AddProduct = () => {
                     <h1 className="text-sm font-bold text-[#0F172A]">Product Category*</h1>
                     <Dropdown
                       label={productCategory || "Select category"}
-                      className='bg-blue-600'
+                      className="bg-white text-blue-500 border border-[#E2E8F0] focus:ring-blue-500 focus:border-blue-500 rounded-lg"
                       onClick={(category) => setProductCategory(category)}
                     >
                       <Dropdown.Item onClick={() => setProductCategory("Phones")}>
@@ -104,6 +104,19 @@ export const AddProduct = () => {
               )}
               {currentPage === 2 && (
                 <>
+                  <div>
+                    <h1 className="text-sm font-bold text-[#0F172A]">Product price*</h1>
+                    <input
+                      type="number"
+                      name="productPrice"
+                      id="productPrice"
+                      value={productPrice}
+                      onChange={(e) => setProductPrice(e.target.value)}
+                      className="bg-white border border-[#E2E8F0] text-[#0F172A] placeholder-bold placeholder-black font-semibold text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      placeholder="Enter product price"
+                      required
+                    />
+                  </div>
                   <div>
                     <h1 className="text-sm font-bold text-[#0F172A]">Product quantity*</h1>
                     <input

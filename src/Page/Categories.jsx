@@ -1,5 +1,3 @@
-// Categories.js
-
 import React, { useState, useRef } from "react";
 import { Button, Checkbox, Table } from "flowbite-react"; // Adjust based on your actual component library
 import { Link } from "react-router-dom";
@@ -72,15 +70,13 @@ export const Categories = ({ toggleView }) => {
           </Link>
         </div>
         <div className="relative overflow-x-auto  mt-5 p-4 bg-white rounded-xl">
-          <Table>
+          <Table className="text-xs text-center text-gray-400">
             <Table.Head>
-              <Table.HeadCell>
-                <Checkbox />
-              </Table.HeadCell>
               <Table.HeadCell>Category</Table.HeadCell>
               <Table.HeadCell>Description</Table.HeadCell>
               <Table.HeadCell>Products Count</Table.HeadCell>
               <Table.HeadCell>Status</Table.HeadCell>
+              <Table.HeadCell>Image</Table.HeadCell>
               <Table.HeadCell>Action</Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
@@ -89,9 +85,6 @@ export const Categories = ({ toggleView }) => {
                   key={index}
                   className="bg-white dark:border-gray-700 dark:bg-gray-800"
                 >
-                  <Table.Cell>
-                    <Checkbox />
-                  </Table.Cell>
                   <Table.Cell>{item.category}</Table.Cell>
                   <Table.Cell>{item.description}</Table.Cell>
                   <Table.Cell>{item.productsCount}</Table.Cell>
@@ -109,13 +102,21 @@ export const Categories = ({ toggleView }) => {
                       ></div>
                     </div>
                   </Table.Cell>
-
+                  <Table.Cell>
+                    {item.image && (
+                      <img
+                        src={URL.createObjectURL(item.image)}
+                        alt={item.category}
+                        className="h-16 w-16 object-cover rounded-full"
+                      />
+                    )}
+                  </Table.Cell>
                   <Table.Cell className="flex gap-2 ">
                     <Link to="/editcategories">
                       <IconButton
                         className={"bg-blue-200 w-full text-blue-800 border-0"}
                         child={<BiEdit size={20} />}
-                        description={"Update Order Status"}
+                        description={"Update Category"}
                       />
                     </Link>
                     <Link to="/viewcategories">
@@ -124,7 +125,7 @@ export const Categories = ({ toggleView }) => {
                           "bg-green-200 w-full text-green-800 border-0 hover:bg-green-700"
                         }
                         child={<LuView size={20} />}
-                        description={"View Order Details"}
+                        description={"View Category Details"}
                       />
                     </Link>
                   </Table.Cell>
