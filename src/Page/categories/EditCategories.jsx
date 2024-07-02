@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Wrapper } from "../_Component/wrapper_components";
+import { Wrapper } from "../../_Component/wrapper_components";
 import { Button } from "flowbite-react";
+// import { EditCategory } from '../../_data/api.js';
 
-export const AddCategories = ({ handleAddCategory }) => {
+export const EditCategories = ({ handleEditCategory }) => {
   const [categoryName, setCategoryName] = useState("");
   const [categoryDescription, setCategoryDescription] = useState("");
   const [status, setStatus] = useState(false);
@@ -17,7 +18,7 @@ export const AddCategories = ({ handleAddCategory }) => {
     setCategoryImage(file);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if (!categoryName || !categoryDescription) {
@@ -25,23 +26,27 @@ export const AddCategories = ({ handleAddCategory }) => {
       return;
     }
 
-    const newCategory = {
-      category: categoryName,
-      description: categoryDescription,
-      productsCount: 0, // Initially set to 0
-      status: status,
-      image: categoryImage, // Include image in the category object
-      // Add other fields as needed
-    };
+    const newCategory = new FormData();
+    newCategory.append('categoryName', categoryName);
+    newCategory.append('categoryDescription', categoryDescription);
+    newCategory.append('productsCount', 0); // Initially set to 0
+    newCategory.append('status', status);
+    newCategory.append('categoryImage', categoryImage);
 
-    // Call parent function to add category
-    handleAddCategory(newCategory);
+    try {
+      await EditCategory(newCategory);
+      // Call parent function to add category
+      handleEditCategory(newCategory);
 
-    // Reset form fields
-    setCategoryName("");
-    setCategoryDescription("");
-    setStatus(false);
-    setCategoryImage(null);
+      // Reset form fields
+      setCategoryName("");
+      setCategoryDescription("");
+      setStatus(false);
+      setCategoryImage(null);
+    } catch (error) {
+      console.error('Error adding category:', error);
+      alert('Error adding category');
+    }
   };
 
   return (
@@ -112,6 +117,7 @@ export const AddCategories = ({ handleAddCategory }) => {
                   </label>
                   <input
                     type="file"
+                    multiple
                     name="categoryImage"
                     id="categoryImage"
                     onChange={handleFileChange}
@@ -133,4 +139,4 @@ export const AddCategories = ({ handleAddCategory }) => {
       </div>
     </Wrapper>
   );
-};
+}

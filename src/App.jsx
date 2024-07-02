@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./Page/Login.jsx"; // Ensure this matches the exact file name
 import { Reset } from "./Page/Reset.jsx";
 import { Dashboard } from "./Page/Dashboard.jsx";
-import { Categories } from "./Page/Categories.jsx";
+import { Categories } from "./Page/categories/Categories.jsx";
 import { Product } from "./Page/Product.jsx";
 import { Order } from "./Page/Order.jsx";
 import { Report } from "./Page/Report.jsx";
@@ -13,9 +13,9 @@ import { AddProduct } from "./Page/AddProduct.jsx";
 import { ViewProduct } from "./Page/ViewProduct.jsx";
 import { EditProduct } from "./Page/EditProduct.jsx";
 import { ViewCategories } from "./Page/ViewCategories.jsx";
-import { AddCategories } from "./Page/AddCategories.jsx";
+import { AddCategories } from "./Page/categories/AddCategories.jsx";
 
-import { EditCategories } from "./Page/EditCategories.jsx";
+import { EditCategories } from "./Page/categories/EditCategories.jsx";
 function App() {
   return (
     <BrowserRouter>

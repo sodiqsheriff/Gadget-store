@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { MdOutlineNotificationsActive } from "react-icons/md";
-import NotificationItem from './NotificationItem';
+import NotificationItem from "./NotificationItem";
 
 type Notification = {
   id: number;
@@ -16,47 +16,43 @@ export const NotificationBell: React.FC = () => {
     const newNotification: Notification = {
       id: notifications.length,
       message,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
     setNotifications([...notifications, newNotification]);
   };
- const handleBellClick =()=>{
+  const handleBellClick = () => {
     setIsDropdownVisible(!isDropdownVisible);
-    if(!isDropdownVisible) {
-        addNotification("your wallet has been funded")
+    if (!isDropdownVisible) {
+      addNotification("your wallet has been funded");
     }
- }
+  };
   return (
     <div className="relative">
-      <button
-        onClick={handleBellClick}
-        className="relative focus:outline-none"
-      >
+      <button onClick={handleBellClick} className="relative focus:outline-none">
         <MdOutlineNotificationsActive className="w-6 h-6 text-gray-600" />
         {notifications.length > 0 && (
           <span className="absolute top-0 right-0 inline-block w-2 h-2 bg-red-600 rounded-full"></span>
         )}
       </button>
-{isDropdownVisible && (
-      <div className="absolute right-0 mt-2 w-72 mx-auto bg-white rounded-lg shadow-lg">
-        <div className="py-2 px-5 pt-2 pb-4">
-        <h2 className="text-2xl font-medium">Notifications</h2>
+      {isDropdownVisible && (
+        <div className=" rounded-lg shadow-lg bg-white max-h-fit">
+          <div className="absolute mx-auto  w-full bg-white">
+            <h2 className="text-2xl font-medium">Notifications</h2>
 
-          {notifications.length > 0 ? (
-            notifications.map((notification) => (
-              <NotificationItem 
-                key={notification.id} 
-                message={notification.message} 
-                timestamp={notification.timestamp} 
-              />
-            ))
-          ) : (
-            <div className="px-4 py-2 text-gray-700">No notification</div>
-          )}
+            {notifications.length > 0 ? (
+              notifications.map((notification) => (
+                <NotificationItem
+                  key={notification.id}
+                  message={notification.message}
+                  timestamp={notification.timestamp}
+                />
+              ))
+            ) : (
+              <div className="px-4 py-2 text-gray-700">No notification</div>
+            )}
+          </div>
         </div>
-      </div>
-)}
+      )}
     </div>
   );
 };
-

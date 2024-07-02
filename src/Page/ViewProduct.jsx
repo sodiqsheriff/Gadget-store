@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react';
 import ImageGallery from 'react-image-gallery';
 import image from "../_assets/wactch.svg";
 import { Wrapper } from '../_Component/wrapper_components';
+import { Dropdown, TextInput } from 'flowbite-react';
 
 export const ViewProduct = () => {
     const [productName, setProductName] = useState('');
     const [productDescription, setProductDescription] = useState('');
     const [productStatus, setProductStatus] = useState(true); // true for active, false for inactive
     const [productImages, setProductImages] = useState([]);
+    const [productCategory, setProductCategory] = useState('');
+    const [productPrice, setProductPrice] = useState('');
+    const [productQuantity, setProductQuantity] = useState('');
+    const [productDiscount, setProductDiscount] = useState('');
 
     useEffect(() => {
         // Fetch product details and images from API or local storage
@@ -44,6 +49,7 @@ export const ViewProduct = () => {
 
     return (
         <Wrapper pageTitle='View Product'>
+            <div className="flex flex-row gap-12">
             <div className="p-4 max-w-md mb-5 bg-white rounded-md">
                 <div className="mb-8">
                     {/* Full-size image */}
@@ -78,6 +84,27 @@ export const ViewProduct = () => {
                 </div>
 
                 {/* Additional content or actions related to the product */}
+            </div>
+            <div className=" bg-white rounded-lg max-w-[25rem] h-fit shadow-lg w-full p-4">
+                  
+                    <div className="flex flex-col my-5">
+                    <span className='font-bold'>Product Category:</span>
+                    <span className='font-medium p-2 mt-2 rounded-lg'> Phone</span>
+              </div>
+           <div className="flex flex-col">
+             <span className='font-bold'>Product Quantity:</span>
+             <span className='font-medium mt-2 rounded-lg'> 20</span>
+             </div>
+           <div className="flex flex-col my-5">
+             <span className='font-bold'>Product price:</span>
+             <span className='font-medium mt-2 rounded-lg'>#5000</span>
+           </div>  
+           <div className="flex flex-col my-5">
+             <span className='font-bold'>Product Discount:</span>
+             <span className='font-medium mt-2 rounded-lg'> #500</span>
+           </div>     
+            {/* category,price,quantity,discount */}
+            </div>
             </div>
         </Wrapper>
     );

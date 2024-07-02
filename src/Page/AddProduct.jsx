@@ -8,7 +8,7 @@ import productlist4 from "../_assets/productlist4.svg"
 
 
 export const AddProduct = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);  
   const [productName, setProductName] = useState('');
   const [productCategory, setProductCategory] = useState('');
   const [productDescription, setProductDescription] = useState('');
@@ -86,7 +86,7 @@ export const AddProduct = () => {
                   <div>
                     <h1 className="text-sm font-bold text-[#0F172A]">Product descriptions*</h1>
                     <h1 className="text-xs font-normal text-[#64748B] py-3">
-                      Include min. 260 characters to make it easier for buyers to understand and find your product
+                      Include min. 200 characters to make it easier for buyers to understand and find your product
                     </h1>
                     <textarea
                       name="productDescription"
@@ -97,6 +97,7 @@ export const AddProduct = () => {
                       className="w-full p-5 border border-[#E2E8F0] rounded-lg text-sm font-normal"
                       cols="30"
                       rows="10"
+                      max="200"
                       required
                     ></textarea>
                   </div>

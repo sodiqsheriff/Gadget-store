@@ -233,14 +233,14 @@ export const Dashboard = () => {
                   </Table.Cell>
                   <Table.Cell className="flex gap-2 ">
                     <IconButton
-                      className={"bg-blue-200 w-full text-blue-800 border-0"}
+                      className={"bg-blue-200 w-fit text-blue-800 border-0"}
                       child={<BiEdit size={20} />}
                       description={"Update Order Status"}
                     />
 
                     <IconButton
                       className={
-                        "bg-green-200 w-full text-green-800 border-0 hover:bg-green-700"
+                        "bg-green-200 w-fit text-green-800 border-0 hover:bg-green-700"
                       }
                       child={<LuView size={20} />}
                       description={"View Order Details"}

@@ -1,0 +1,509 @@
+{
+	"info": {
+		"_postman_id": "43aacb75-b7be-42c9-ad3a-ce11b6229f54",
+		"name": "StarbestGroup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Accounregististration",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "AccountLogin",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "AddCategory",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryName\": \"Fan\",\r\n    \"categroyDescription\":\"A moving thing\",\r\n    \"categoryImage\":\"https://img.freepik.com/premium-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719705600&semt=sph\",\r\n    \"categoryStatus\": true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/addCategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"addCategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCategory",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryName\": \"antivirus\",\r\n    \"categroyDescription\":\"A moving thiiiing\",\r\n    \"categoryStatus\": true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/updateCategory/ab7af54a171d49d09ec5bd116882d7a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"updateCategory",
+						"ab7af54a171d49d09ec5bd116882d7a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddProducts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"Iphoneeeee5322111\",\r\n    \"productDescription\": \"Description of the new avast antivirus\",\r\n    \"discountedPrice\":0.0,\r\n    \"productStatus\":false,\r\n    \"productPrice\": 50.99,\r\n    \"productImage\":\"https://img.freepik.com/premium-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719705600&semt=sph,https://img.freepik.com/premium-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719705600&semt=sph,https://img.freepik.com/premium-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719705600&semt=sph\",\r\n    \"numberproductSupplied\":34\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/categories/85f9417c92f643e0b0928dbbe5107c0d/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"categories",
+						"85f9417c92f643e0b0928dbbe5107c0d",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProduct",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"Iphone\",\r\n    \"productDescription\": \"Description of the new avast antivirus\",\r\n    \"discountedPrice\":0.0,\r\n    \"productStatus\":true,\r\n    \"productPrice\": 50.99,\r\n    \"productImage\":\"https://img.freepik.com/premium-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719705600&semt=sph,https://img.freepik.com/premium-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719705600&semt=sph,https://img.freepik.com/premium-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719705600&semt=sph\",\r\n    \"numberproductSupplied\":34\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/updateProduct/2832110435a34ed9a61fed44f41b9794",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"updateProduct",
+						"2832110435a34ed9a61fed44f41b9794"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ViewCategories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9393/starbest/category/viewAllcategories?categoryId=85f9417c92f643e0b0928dbbe5107c0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"category",
+						"viewAllcategories"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "85f9417c92f643e0b0928dbbe5107c0d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ViewProducts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9393/starbest/products/viewAllproducts?productId=9c25e0fccfdb4649810bfb5905806f98",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"products",
+						"viewAllproducts"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "9c25e0fccfdb4649810bfb5905806f98"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddAddress",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fulladdress\":\"17 Sanusi Fafunwa Street Lagos, Nigeria\",\r\n    \"postalcode\":\"0022332\",\r\n    \"zipcode\":\"902232\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/addaddress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"addaddress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAddress",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fulladdress\":\"35 Sanusi Fafunwa Street Lagos, Nigeria\",\r\n    \"postalcode\":\"0022332\",\r\n    \"zipcode\":\"902232\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/updateAddress/bbdc08a55a3f4bd2afc3e6580c85b2e6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"updateAddress",
+						"bbdc08a55a3f4bd2afc3e6580c85b2e6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ViewAddress",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9393/starbest/address/viewAlladdress?addressId=bbdc08a55a3f4bd2afc3e6580c85b2e6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"address",
+						"viewAlladdress"
+					],
+					"query": [
+						{
+							"key": "addressId",
+							"value": "bbdc08a55a3f4bd2afc3e6580c85b2e6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAddress",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9393/starbest/deleteAddressById/bbdc08a55a3f4bd2afc3e6580c85b2e6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"deleteAddressById",
+						"bbdc08a55a3f4bd2afc3e6580c85b2e6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalCost\": 5.6,\r\n    \"orderMessage\": \"T\",\r\n    \"orderStatusMessage\": \"T\",\r\n    \"createdDate\": \"2024-06-27T18:08:22.295Z\",\r\n    \"userEmail\": \"tunemessy@gmail.com\",\r\n    \"contactPhone\": \"002\",\r\n    \"contactEmail\": \"909910\",\r\n    \"address\": \"37 VI, Lagos. Nigeria\",\r\n    \"deliveryDate\":\"\",\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"8c42b879902e45ef8e5f2cadad0a1d31\",\r\n            \"productName\": \"Honda\",\r\n            \"productDescription\": \"Description of the new product\",\r\n            \"discountedPrice\": 0.0,\r\n            \"productStatus\": \"true\",\r\n            \"productPrice\": 50.99,\r\n            \"numberproductSupplied\": 34\r\n        },\r\n        {\r\n            \"productId\": \"8c42b879902e45ef8e5f2cadad0a1d31\",\r\n            \"productName\": \"Toyota\",\r\n            \"productDescription\": \"Description of the new product\",\r\n            \"discountedPrice\": 0.0,\r\n            \"productStatus\": \"true\",\r\n            \"productPrice\": 80.99,\r\n            \"numberproductSupplied\": 34\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/orders/addOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"orders",
+						"addOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateOrder",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalCost\": 5.6,\r\n    \"orderMessage\": \"T\",\r\n    \"orderStatusMessage\": \"T\",\r\n    \"createdDate\": \"2024-06-27T18:08:22.295Z\",\r\n    \"userEmail\": \"tunemessy@gmail.com\",\r\n    \"contactPhone\": \"001\",\r\n    \"contactEmail\": \"909910\",\r\n    \"address\": \"5 VI, Lagos. Nigeria\",\r\n    \"transactionId\":\"b64f6eb2f0ad446aa905b28a599d457a\",\r\n    \"userId\":\"cecde3c0b702403cba4ee0b6f109f7f2\",\r\n    \"deliveryDate\":\"\",\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"8c42b879902e45ef8e5f2cadad0a1d31\",\r\n            \"productName\": \"Honda\",\r\n            \"productDescription\": \"Description of the new product\",\r\n            \"discountedPrice\": 0.0,\r\n            \"productStatus\": \"true\",\r\n            \"productPrice\": 50.99,\r\n            \"numberproductSupplied\": 34\r\n        },\r\n        {\r\n            \"productId\": \"8c42b879902e45ef8e5f2cadad0a1d31\",\r\n            \"productName\": \"Toyota\",\r\n            \"productDescription\": \"Description of the new product\",\r\n            \"discountedPrice\": 0.0,\r\n            \"productStatus\": \"true\",\r\n            \"productPrice\": 80.99,\r\n            \"numberproductSupplied\": 34\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/orders/updateOrder/29ec7935aef04a6a87fc6e85359ab00a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"orders",
+						"updateOrder",
+						"29ec7935aef04a6a87fc6e85359ab00a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LatestTenProducts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9393/starbest/latestProducts/ab7af54a171d49d09ec5bd116882d7a6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"latestProducts",
+						"ab7af54a171d49d09ec5bd116882d7a6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Top5Categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9393/starbest/top5categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"top5categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllProductsByCategoryId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9393/starbest/products/85f9417c92f643e0b0928dbbe5107c0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"products",
+						"85f9417c92f643e0b0928dbbe5107c0d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscription",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userEmail\": \"tunemessy@gmail.com\",\r\n    \"subscribe\": false,\r\n    \"unsubscribe\":true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9393/starbest/subscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9393",
+					"path": [
+						"starbest",
+						"subscription"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
