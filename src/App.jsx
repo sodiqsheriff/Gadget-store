@@ -4,15 +4,15 @@ import { Login } from "./Page/Login.jsx"; // Ensure this matches the exact file 
 import { Reset } from "./Page/Reset.jsx";
 import { Dashboard } from "./Page/Dashboard.jsx";
 import { Categories } from "./Page/categories/Categories.jsx";
-import { Product } from "./Page/Product.jsx";
+import { Product } from "./Page/product/Product.jsx";
 import { Order } from "./Page/Order.jsx";
 import { Report } from "./Page/Report.jsx";
 import { Customer } from "./Page/Customer.jsx";
 import { NotFound } from "./_Component/NotFound.jsx"; // Ensure this component exists
-import { AddProduct } from "./Page/AddProduct.jsx"; 
-import { ViewProduct } from "./Page/ViewProduct.jsx";
-import { EditProduct } from "./Page/EditProduct.jsx";
-import { ViewCategories } from "./Page/ViewCategories.jsx";
+import { AddProduct } from "./Page/product/AddProduct.jsx"; 
+import { ViewProduct } from "./Page/product/ViewProduct.jsx";
+import { EditProduct } from "./Page/product/EditProduct.jsx";
+import { ViewCategories } from "./Page/categories/ViewCategories.jsx";
 import { AddCategories } from "./Page/categories/AddCategories.jsx";
 
 import { EditCategories } from "./Page/categories/EditCategories.jsx";

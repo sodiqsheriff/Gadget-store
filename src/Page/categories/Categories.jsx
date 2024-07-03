@@ -21,12 +21,16 @@ export const Categories = ({ toggleView }) => {
         handleLoading();
         const data = await fetchCategories();
         handleLoading();
-        setCategoriesData(data.content);
-        setStatuses(data.content.map((item) => item.categoryStatus));
-        setDropdownOpen(Array(data.length).fill(false));
-        dropdownRefs.current = data.map(() => React.createRef());
+        const content = data.content;
+        // console.log("data coontent = ", data.content);
+
+        setCategoriesData(content);
+
+        console.log({ data }, "loading =", { loading }, {categoriesData});
+        // setStatuses(data.content.map((item) => item.categoryStatus));
+        // setDropdownOpen(Array(data.length).fill(false));
+        // dropdownRefs.current = data.map(() => React.createRef());
       } catch (error) {
-      
         console.error("Error fetching categories:", error);
       }
     })();
@@ -42,21 +46,6 @@ export const Categories = ({ toggleView }) => {
     );
   };
 
-  const toggleDropdown = (index) => {
-    setDropdownOpen((prevState) =>
-      prevState.map((isOpen, i) => (i === index ? !isOpen : false))
-    );
-  };
-
-  const handleClickOutside = (event) => {
-    dropdownRefs.current.forEach((ref, index) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setDropdownOpen((prevState) =>
-          prevState.map((isOpen, i) => (i === index ? false : isOpen))
-        );
-      }
-    });
-  };
 
   return (
     <>
@@ -90,7 +79,11 @@ export const Categories = ({ toggleView }) => {
           </Link>
         </div>
         <div className="relative overflow-x-auto mt-5 p-4 bg-white rounded-xl">
-          {!loading && (
+          {loading ? (
+            <div className="flex flex-col items-center">
+              <Spinner className="mx-auto" />
+            </div>
+          ) : (
             <Table className="text-xs text-center text-gray-400">
               <Table.Head>
                 <Table.HeadCell>Category</Table.HeadCell>
@@ -129,11 +122,9 @@ export const Categories = ({ toggleView }) => {
                     </Table.Cell>
 
                     <Table.Cell className="flex gap-2">
-                      <Link to="/editcategories">
+                      <Link to="/editcategories" state={item}>
                         <IconButton
-                          className={
-                            "bg-blue-200 w-full text-blue-800 border-0"
-                          }
+                          className={"bg-blue-200 w-fit text-blue-800 border-0"}
                           child={<BiEdit size={20} />}
                           description={"Update Category"}
                         />
@@ -141,7 +132,7 @@ export const Categories = ({ toggleView }) => {
                       <Link to="/viewcategories">
                         <IconButton
                           className={
-                            "bg-green-200 w-full text-green-800 border-0 hover:bg-green-700"
+                            "bg-green-200 w-fit text-green-800 border-0 hover:bg-green-700"
                           }
                           child={<LuView size={20} />}
                           description={"View Category Details"}
@@ -152,12 +143,6 @@ export const Categories = ({ toggleView }) => {
                 ))}
               </Table.Body>
             </Table>
-          )}
-
-          {loading && (
-            <div className="flex flex-col items-center">
-              <Spinner className="mx-auto" />
-            </div>
           )}
         </div>
       </Wrapper>

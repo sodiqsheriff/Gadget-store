@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Wrapper } from '../_Component/wrapper_components';
 import { Table, Button } from 'flowbite-react'; // Adjust based on your actual component library
 import { FaPlus } from 'react-icons/fa';
 import { BiEdit } from 'react-icons/bi';
 import { LuView } from 'react-icons/lu';
-import { IconButton } from '../_Component/components.jsx';
-import { data } from '../_data/test_data.js';
-import watch from '../_assets/wactch.svg'
+import { IconButton } from '../../_Component/components.jsx';
+import { data } from '../../_data/test_data.js';
+import watch from '../../_assets/wactch.svg'
+import { Wrapper } from '../../_Component/wrapper_components';
 
 export const Product = () => {
     const [statuses, setStatuses] = useState(data.map((item) => item.status));

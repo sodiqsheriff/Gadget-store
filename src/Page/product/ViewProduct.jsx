@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import ImageGallery from 'react-image-gallery';
-import image from "../_assets/wactch.svg";
-import { Wrapper } from '../_Component/wrapper_components';
-import { Dropdown, TextInput } from 'flowbite-react';
+import image from "../../_assets/wactch.svg";
+import { Wrapper } from '../../_Component/wrapper_components';
 
 export const ViewProduct = () => {
     const [productName, setProductName] = useState('');
     const [productDescription, setProductDescription] = useState('');
     const [productStatus, setProductStatus] = useState(true); // true for active, false for inactive
     const [productImages, setProductImages] = useState([]);
-    const [productCategory, setProductCategory] = useState('');
-    const [productPrice, setProductPrice] = useState('');
-    const [productQuantity, setProductQuantity] = useState('');
-    const [productDiscount, setProductDiscount] = useState('');
+    
 
     useEffect(() => {
         // Fetch product details and images from API or local storage

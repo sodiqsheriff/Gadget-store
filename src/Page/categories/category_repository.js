@@ -9,12 +9,8 @@ const MySwal = withReactContent(Swal);
 export const fetchCategories = async () => {
   try {
     const url = `${config.baseURL}/category/?pageNo=0&pageSize=5`;
-    const response = await axios.get(url, {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-    console.log({ response });
+      const response = await axios.get(url);
+    console.log({ response }, response.data.responseCode == "00");
 
     if (response.data.responseCode == "00") {
       return response.data.data;
