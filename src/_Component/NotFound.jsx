@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-export const NotFound =()=> {
+export const NotFound = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="text-center">
@@ -16,4 +16,3 @@ export const NotFound =()=> {
     </div>
   );
 };
-
