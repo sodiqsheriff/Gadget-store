@@ -3,11 +3,32 @@ import { Wrapper } from "../_Component/Wrapper";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Slider from "react-slick";
 import product1 from "../assets/images/latest_product/latest_product_1.png";
+import product_2 from "../assets/images/latest_product/latest_product_2.png"
+import view12 from "../assets/images/viewed_products/viewed_product_img_6.png";
+import view11 from "../assets/images/viewed_products/viewed_product_img_5.png";
+import view10 from "../assets/images/viewed_products/viewed_product_img_4.png";
+import image1 from '../assets/images/cart/cart_img_1.jpg';
+import image2 from '../assets/images/cart/cart_img_2.jpg';
+import image3 from '../assets/images/cart/cart_img_3.jpg';
+import mac from "../assets/images/shop/product_img_12.png";
+import shop from "../assets/images/shop/product_img_12.png";
+import sale from "../assets/images/shop/product-img-21.png";
+import product2 from "../assets/images/shop/product-img-22.png";
+import product4 from "../assets/images/shop/product-img-23.png";
+import imac from  "../assets/images/shop/product-img-24.png"
+import iphone13 from "../assets/images/shop/product-img-25.png" 
+import category1 from "../assets/images/categories/category_1.png" 
+import category2 from "../assets/images/categories/category_2.png"
+import category3 from "../assets/images/categories/category_3.png"
+import category4 from "../assets/images/categories/category_4.png"
+import category5 from "../assets/images/categories/category_5.png"
+import cctv from "../assets/images/categories/category_3.png"
+import promotion from "../assets/images/promotion/banner_img_1.png"
+import promotion2 from "../assets/images/promotion/banner_img_2.png"
+import { CustomSlider } from "../_Component/CustomSlider";
+
 // import src from "../map_data/data.js"
-export const Home = ({ src, alt }) => {
-  const settings = {
-    arrows: false,
-  };
+export const Home = () => {
 
   const slides = [
     {
@@ -55,7 +76,7 @@ export const Home = ({ src, alt }) => {
               <ul className="cart_items_list ul_li_block mb_30 clearfix">
                 <li>
                   <div className="item_image">
-                    <img src={src} alt={alt} />
+                    <img src={image1} alt='alt' />
                   </div>
                   <div className="item_content">
                     <h4 className="item_title">Yellow Blouse</h4>
@@ -67,7 +88,7 @@ export const Home = ({ src, alt }) => {
                 </li>
                 <li>
                   <div className="item_image">
-                    <img src={src} alt={alt} />
+                    <img src={image2} alt='alt' />
                   </div>
                   <div className="item_content">
                     <h4 className="item_title">Yellow Blouse</h4>
@@ -79,7 +100,7 @@ export const Home = ({ src, alt }) => {
                 </li>
                 <li>
                   <div className="item_image">
-                    <img src={src} alt={alt} />
+                    <img src={image3} alt='alt' />
                   </div>
                   <div className="item_content">
                     <h4 className="item_title">Yellow Blouse</h4>
@@ -158,7 +179,7 @@ export const Home = ({ src, alt }) => {
                       <div className="row">
                         <div className="col col-lg-6">
                           <div className="product_details_image p-0">
-                            {/* <img src="assets/images/shop/product_img_12.png" alt> */}
+                            <img src={shop} alt='alt' />
                           </div>
                         </div>
 
@@ -339,65 +360,9 @@ export const Home = ({ src, alt }) => {
             
             <!-- slider_section - start
             ================================================== --> */}
-          <section className="slider_section">
-            <Container>
-              <Row>
-                <Col lg={{ span: 9, offset: 3 }}>
-                  <Slider className="main_slider" {...settings}>
-                    {slides.map((slide) => (
-                      <div
-                        key={slide.id}
-                        className={`slider_item ${slide.bgClass}`}
-                      >
-                        <div className="slider_content">
-                          <h3
-                            className="small_title"
-                            data-animation="fadeInUp2"
-                            data-delay=".2s"
-                          >
-                            {slide.smallTitle}
-                          </h3>
-                          <h4
-                            className="big_title"
-                            data-animation="fadeInUp2"
-                            data-delay=".4s"
-                          >
-                            {slide.bigTitle.split(" ").map((word, index) => (
-                              <React.Fragment key={index}>
-                                {word}
-                                {index === 1 && <span> </span>}
-                              </React.Fragment>
-                            ))}
-                          </h4>
-                          <p data-animation="fadeInUp2" data-delay=".6s">
-                            {slide.description}
-                          </p>
-                          <div
-                            className="item_price"
-                            data-animation="fadeInUp2"
-                            data-delay=".6s"
-                          >
-                            <del>{slide.originalPrice}</del>
-                            <span className="sale_price">
-                              {slide.salePrice}
-                            </span>
-                          </div>
-                          <Button
-                            className="btn btn_primary"
-                            href={slide.link}
-                            data-animation="fadeInUp2"
-                            data-delay=".8s"
-                          >
-                            Start Buying
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
-                  </Slider>
-                </Col>
-              </Row>
-            </Container>
-          </section>
+         <div className="App">
+      <CustomSlider slides={slides} />
+    </div>
           {/* <!-- slider_section - end
             ================================================== -->
             
@@ -474,7 +439,7 @@ export const Home = ({ src, alt }) => {
                     <div className="product-area clearfix">
                       <div className="grid">
                         <div className="product-pic">
-                          {/* <img src="assets/images/shop/product_img_12.png" alt> */}
+                          <img src={mac} alt='' />
                           <div className="actions">
                             <ul>
                               <li>
@@ -590,7 +555,7 @@ export const Home = ({ src, alt }) => {
                       </div>
                       <div className="grid">
                         <div className="product-pic">
-                          {/* <img src="assets/images/shop/product-img-21.png" alt> */}
+                          <img src={sale} alt='' />
                           <span className="theme-badge">Sale</span>
                           <div className="actions">
                             <ul>
@@ -707,7 +672,7 @@ export const Home = ({ src, alt }) => {
                       </div>
                       <div className="grid">
                         <div className="product-pic">
-                          {/* <img src="assets/images/shop/product-img-22.png" alt> */}
+                          <img src={product2} alt='' />
                           <span className="theme-badge-2">12% off</span>
                           <div className="actions">
                             <ul>
@@ -836,7 +801,7 @@ export const Home = ({ src, alt }) => {
                       </div>
                       <div className="grid">
                         <div className="product-pic">
-                          {/* <img src="assets/images/shop/product-img-23.png" alt> */}
+                          <img src={product4} alt='' />
                           <span className="theme-badge">Sale</span>
                           <div className="actions">
                             <ul>
@@ -951,7 +916,7 @@ export const Home = ({ src, alt }) => {
                       </div>
                       <div className="grid">
                         <div className="product-pic">
-                          {/* <img src="assets/images/shop/product-img-24.png" alt> */}
+                          <img src={imac} alt='' />
                           <span className="theme-badge-2">25% off</span>
                           <div className="actions">
                             <ul>
@@ -1076,7 +1041,7 @@ export const Home = ({ src, alt }) => {
                       </div>
                       <div className="grid">
                         <div className="product-pic">
-                          {/* <img src="assets/images/shop/product-img-25.png" alt> */}
+                          <img src={iphone13} alt='' />
                           <div className="actions">
                             <ul>
                               <li>
@@ -1203,7 +1168,7 @@ export const Home = ({ src, alt }) => {
                         <div className="category_boxed">
                           <a href="#!">
                             <span className="item_image">
-                              {/* <img src="assets/images/categories/category_1.png" alt="image_not_found"> */}
+                              <img src={category1} alt="image_not_found" />
                             </span>
                             <span className="item_title">Men's Watches</span>
                           </a>
@@ -1214,7 +1179,7 @@ export const Home = ({ src, alt }) => {
                         <div className="category_boxed">
                           <a href="#!">
                             <span className="item_image">
-                              {/* <img src="assets/images/categories/category_2.png" alt="image_not_found"> */}
+                              <img src={category2} alt="image_not_found" />
                             </span>
                             <span className="item_title">iPad</span>
                           </a>
@@ -1225,7 +1190,7 @@ export const Home = ({ src, alt }) => {
                         <div className="category_boxed">
                           <a href="#!">
                             <span className="item_image">
-                              {/* <img src="assets/images/categories/category_3.png" alt="image_not_found"> */}
+                              <img src={category3} alt="image_not_found" />
                             </span>
                             <span className="item_title">iPhone</span>
                           </a>
@@ -1236,7 +1201,7 @@ export const Home = ({ src, alt }) => {
                         <div className="category_boxed">
                           <a href="#!">
                             <span className="item_image">
-                              {/* <img src="assets/images/categories/category_4.png" alt="image_not_found"> */}
+                              <img src={category4} alt="image_not_found"/>
                             </span>
                             <span className="item_title">Headphone</span>
                           </a>
@@ -1247,7 +1212,7 @@ export const Home = ({ src, alt }) => {
                         <div className="category_boxed">
                           <a href="#!">
                             <span className="item_image">
-                              {/* <img src="assets/images/categories/category_5.png" alt="image_not_found"> */}
+                              <img src={category5} alt="image_not_found" />
                             </span>
                             <span className="item_title">Mac Mini</span>
                           </a>
@@ -1258,7 +1223,7 @@ export const Home = ({ src, alt }) => {
                         <div className="category_boxed">
                           <a href="#!">
                             <span className="item_image">
-                              {/* <img src="assets/images/categories/category_1.png" alt="image_not_found"> */}
+                              <img src={category1} alt="image_not_found" />
                             </span>
                             <span className="item_title">Men's Watches</span>
                           </a>
@@ -1269,7 +1234,7 @@ export const Home = ({ src, alt }) => {
                         <div className="category_boxed">
                           <a href="#!">
                             <span className="item_image">
-                              {/* <img src="assets/images/categories/category_2.png" alt="image_not_found"> */}
+                              <img src={category2} alt="image_not_found" />
                             </span>
                             <span className="item_title">CCTV Camera</span>
                           </a>
@@ -1280,7 +1245,7 @@ export const Home = ({ src, alt }) => {
                         <div className="category_boxed">
                           <a href="#!">
                             <span className="item_image">
-                              {/* <img src="assets/images/categories/category_3.png" alt="image_not_found"> */}
+                              <img src={cctv} alt="image_not_found" />
                             </span>
                             <span className="item_title">CCTV Camera</span>
                           </a>
@@ -1344,7 +1309,7 @@ export const Home = ({ src, alt }) => {
                         <div className="slider_item">
                           <div className="small_product_layout">
                             <a className="item_image" href="shop_details.html">
-                              {/* <img src="assets/images/latest_product/latest_product_2.png" alt="image_not_found"> */}
+                              <img src={product_2} alt="image_not_found" />
                             </a>
                             <div className="item_content">
                               <h3 className="item_title">
@@ -1579,7 +1544,7 @@ export const Home = ({ src, alt }) => {
                 <div className="col col-lg-6">
                   <div className="promotion_banner">
                     <div className="item_image">
-                      {/* <img src="assets/images/promotion/banner_img_1.png" alt> */}
+                      <img src={promotion} alt='' />
                     </div>
                     <div className="item_content">
                       <h3 className="item_title">
@@ -1599,7 +1564,7 @@ export const Home = ({ src, alt }) => {
                 <div className="col col-lg-6">
                   <div className="promotion_banner">
                     <div className="item_image">
-                      {/* <img src="assets/images/promotion/banner_img_2.png" alt> */}
+                      <img src={promotion2} alt='' />
                     </div>
                     <div className="item_content">
                       <h3 className="item_title">
@@ -2381,7 +2346,7 @@ export const Home = ({ src, alt }) => {
 
                     <div className="viewed_product_item">
                       <div className="item_image">
-                        {/* <img src="assets/images/viewed_products/viewed_product_img_4.png" alt="image_not_found"> */}
+                        <img src={view10} alt="image_not_found" />
                       </div>
                       <div className="item_content">
                         <h3 className="item_title">Accessories</h3>
@@ -2409,7 +2374,7 @@ export const Home = ({ src, alt }) => {
                   <div className="slider_item col">
                     <div className="viewed_product_item">
                       <div className="item_image">
-                        {/* <img src="assets/images/viewed_products/viewed_product_img_5.png" alt="image_not_found"> */}
+                        <img src={view11} alt="image_not_found" />
                       </div>
                       <div className="item_content">
                         <h3 className="item_title">TV & Audio</h3>
@@ -2435,7 +2400,7 @@ export const Home = ({ src, alt }) => {
 
                     <div className="viewed_product_item">
                       <div className="item_image">
-                        {/* <img src="assets/images/viewed_products/viewed_product_img_6.png" alt="image_not_found"> */}
+                        <img src={view12} alt="image_not_found" />
                       </div>
                       <div className="item_content">
                         <h3 className="item_title">Games & Consoles</h3>
@@ -2472,42 +2437,6 @@ export const Home = ({ src, alt }) => {
             </div>
           </section>
 
-          <section
-            className="newsletter_section"
-            style={{ backgroundColor: "blue" }}
-          >
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col col-lg-6">
-                  <h2 className="newsletter_title text-white">
-                    Sign Up for Newsletter{" "}
-                  </h2>
-                  <p>
-                    Get E-mail updates about our latest products and special
-                    offers.
-                  </p>
-                </div>
-                <div className="col col-lg-6">
-                  <form action="#!">
-                    <div className="newsletter_form">
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter your email address"
-                      />
-                      <button
-                        type="submit"
-                        className="btn btn_secondary"
-                        style={{ backgroundColor: "rgb(4, 4, 104)" }}
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </section>
         </main>
       </Wrapper>
     </>

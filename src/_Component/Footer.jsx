@@ -7,6 +7,24 @@ import playstore from "../assets/images/play_store.png";
 export const Footer = () => {
   return (
     <>
+    <section className="newsletter_section" style={{backgroundColor: '#2563EB'}}>
+    <div className="container">
+        <div className="row align-items-center">
+            <div className="col col-lg-6">
+                <h2 className="newsletter_title text-white">Sign Up for Newsletter </h2>
+                <p>Get E-mail updates about our latest products and special offers.</p>
+            </div>
+            <div className="col col-lg-6">
+                <form action="#!">
+                    <div className="newsletter_form">
+                        <input type="email" name="email" placeholder="Enter your email address" />
+                        <button type="submit" className="btn btn_secondary" style={{backgroundColor: 'blue', color: 'white'}}>Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
       <footer className="footer_section">
         <div className="footer_widget_area">
           <div className="container">

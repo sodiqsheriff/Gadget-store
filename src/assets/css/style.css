@@ -397,6 +397,8 @@ hr {
       -ms-flex-align: center;
           align-items: center;
 }
+
+
 .ul_li > li,
 .ul_li_right > li,
 .ul_li_center > li {
@@ -1132,7 +1134,7 @@ hr {
 }
 
 .header_bottom {
-  z-index: 1;
+  /* z-index: 1; */
   position: relative;
   border-bottom: 1px solid #D8E1E6;
 }
@@ -1140,7 +1142,7 @@ hr {
   top: 0;
   width: 50%;
   content: "";
-  z-index: -1;
+  /* z-index: -1; */
   height: 100%;
   position: absolute;
 }
