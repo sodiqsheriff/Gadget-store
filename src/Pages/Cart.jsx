@@ -45,7 +45,6 @@ export const Cart = () => {
     );
   };
   return (
-    <Wrapper>
       <main>
         {/* <!-- sidebar cart - start
 ================================================== --> */}
@@ -367,6 +366,5 @@ export const Cart = () => {
         {/* <!-- newsletter_section - end
 ================================================== --> */}
       </main>
-    </Wrapper>
   );
 };

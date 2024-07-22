@@ -1,32 +1,20 @@
-import React from "react";
-// import { Wrapper } from "../_Component/Wrapper";
-// import { Container, Row, Col, Button } from "react-bootstrap";
-import product1 from "../assets/images/latest_product/latest_product_1.png";
-import product_2 from "../assets/images/latest_product/latest_product_2.png"
-import view12 from "../assets/images/viewed_products/viewed_product_img_6.png";
-import view11 from "../assets/images/viewed_products/viewed_product_img_5.png";
-import view10 from "../assets/images/viewed_products/viewed_product_img_4.png";
-
+import React, { useEffect, useState } from "react";
 import mac from "../assets/images/shop/product_img_12.png";
 import shop from "../assets/images/shop/product_img_12.png";
 import sale from "../assets/images/shop/product-img-21.png";
-import product2 from "../assets/images/shop/product-img-22.png";
+import product2 from "../assets/images/shop/product-img-21.png";
 import product4 from "../assets/images/shop/product-img-23.png";
-import imac from "../assets/images/shop/product-img-24.png"
+import imac  from "../assets/images/shop/product-img-24.png"
+import pro from "../assets/images/shop/product-img-28.png"
 import iphone13 from "../assets/images/shop/product-img-25.png"
-import category1 from "../assets/images/categories/category_1.png"
-import category2 from "../assets/images/categories/category_2.png"
-import category3 from "../assets/images/categories/category_3.png"
-import category4 from "../assets/images/categories/category_4.png"
-import category5 from "../assets/images/categories/category_5.png"
-import cctv from "../assets/images/categories/category_3.png"
 import promotion from "../assets/images/promotion/banner_img_1.png"
 import promotion2 from "../assets/images/promotion/banner_img_2.png"
 import { CustomSlider } from "../_Component/CustomSlider";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
+import { fetchProduct } from "../_repo/product_repository";
 
-// import src from "../map_data/data.js"
 export const Home = () => {
-  console.log("Home called");
+  console.log("Home called"); 
   const slides = [
     {
       id: 1,
@@ -59,6 +47,45 @@ export const Home = () => {
       link: "shop_details.html",
     },
   ];
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [pageNo, setPageNo] = useState(0);
+  const [pageSize] = useState(6);
+
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const data = await getProducts();
+  //       setProducts(data);
+  //     } catch (error) {
+  //       console.error('Error fetching products:', error);
+  //     }
+  //   };
+
+  //   fetchProducts();
+  // }, []);
+//define 
+useEffect(() => {
+  const loadProducts = async () => {
+    try {
+      const data = await fetchProduct(pageNo, pageSize);
+      setProducts(data.content);
+    } catch (error) {
+      console.error('Error loading products:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  loadProducts();
+}, [pageNo, pageSize]);
+
+if (loading) {
+  return <Spinner animation="border" />;
+}
+
   return (
     <>
       {/* <Wrapper> */}
@@ -72,7 +99,7 @@ export const Home = () => {
           id="quickview_popup"
           aria-hidden="true"
           aria-labelledby="exampleModalToggleLabel2"
-          tabindex="-1"
+          tabIndex="-1"
         >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
@@ -340,7 +367,7 @@ export const Home = () => {
         <section className="products-with-sidebar-section">
           <div className="container">
             <div className="row">
-              <div className="col-lg-9 order-lg-3">
+              <div className="col-lg-12 order-lg-3">
                 <div className="best-selling-products">
                   <div className="sec-title-link">
                     <h3>Best selling</h3>
@@ -350,1104 +377,151 @@ export const Home = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="product-area clearfix">
-                    <div className="grid">
-                      <div className="product-pic">
-                        <img src={mac} alt='' />
-                        <div className="actions">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Favourite</title>{" "}
-                                  <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Shuffle</title>{" "}
-                                  <path d="M21 16.0399H17.7707C15.8164 16.0399 13.9845 14.9697 12.8611 13.1716L10.7973 9.86831C9.67384 8.07022 7.84196 7 5.88762 7L3 7" />{" "}
-                                  <path d="M21 7H17.7707C15.8164 7 13.9845 8.18388 12.8611 10.1729L10.7973 13.8271C9.67384 15.8161 7.84196 17 5.88762 17L3 17" />{" "}
-                                  <path d="M19 4L22 7L19 10" />{" "}
-                                  <path d="M19 13L22 16L19 19" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="quickview_btn"
-                                data-bs-toggle="modal"
-                                href="#quickview_popup"
-                                role="button"
-                                tabindex="0"
+          
+            <Container>
+            <div className="product-area clearfix">
+              {products.length > 0 ? (
+                products.map(product => (
+                  <div key={product.id} className="grid">
+                    <div className="product-pic">
+                      <img src={product.image} alt='' />
+                      <div className="actions">
+                        <ul>
+                          <li>
+                            <a href="#">
+                              <svg
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="48px"
+                                height="48px"
+                                viewBox="0 0 24 24"
+                                stroke="#2329D6"
+                                stroke-width="1"
+                                stroke-linecap="square"
+                                stroke-linejoin="miter"
+                                fill="none"
+                                color="#2329D6"
                               >
-                                <svg
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Visible (eye)</title>{" "}
-                                  <path d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />{" "}
-                                  <circle cx="12" cy="12" r="3" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="details">
-                        <h4>
-                          <a href="#">Macbook Pro</a>
-                        </h4>
-                        <p>
-                          <a href="#">
-                            Apple MacBook Pro13.3″ Laptop with new Touch bar
-                            ID{" "}
-                          </a>
-                        </p>
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star-half-alt"></i>
-                        </div>
-                        <span className="price">
-                          <ins>
-                            <span className="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                  $
-                                </span>
-                                471.48
-                              </bdi>
-                            </span>
-                          </ins>
-                        </span>
-                        <div className="add-cart-area">
-                          <button className="add-to-cart" href="./cart.html">
-                            Add to cart
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid">
-                      <div className="product-pic">
-                        <img src={sale} alt='' />
-                        <span className="theme-badge">Sale</span>
-                        <div className="actions">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Favourite</title>{" "}
-                                  <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Shuffle</title>{" "}
-                                  <path d="M21 16.0399H17.7707C15.8164 16.0399 13.9845 14.9697 12.8611 13.1716L10.7973 9.86831C9.67384 8.07022 7.84196 7 5.88762 7L3 7" />{" "}
-                                  <path d="M21 7H17.7707C15.8164 7 13.9845 8.18388 12.8611 10.1729L10.7973 13.8271C9.67384 15.8161 7.84196 17 5.88762 17L3 17" />{" "}
-                                  <path d="M19 4L22 7L19 10" />{" "}
-                                  <path d="M19 13L22 16L19 19" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="quickview_btn"
-                                data-bs-toggle="modal"
-                                href="#quickview_popup"
-                                role="button"
-                                tabindex="0"
+                                {" "}
+                                <title>Favourite</title>{" "}
+                                <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />{" "}
+                              </svg>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <svg
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="48px"
+                                height="48px"
+                                viewBox="0 0 24 24"
+                                stroke="#2329D6"
+                                stroke-width="1"
+                                stroke-linecap="square"
+                                stroke-linejoin="miter"
+                                fill="none"
+                                color="#2329D6"
                               >
-                                <svg
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Visible (eye)</title>{" "}
-                                  <path d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />{" "}
-                                  <circle cx="12" cy="12" r="3" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="details">
-                        <h4>
-                          <a href="#">Apple Watch</a>
-                        </h4>
-                        <p>
-                          <a href="#">
-                            Apple Watch Series 7 case Pair any band with cool
-                            design
-                          </a>
-                        </p>
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star-half-alt"></i>
-                        </div>
-                        <span className="price">
-                          <ins>
-                            <span className="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                  $
-                                </span>
-                                471.48
-                              </bdi>
-                            </span>
-                          </ins>
-                        </span>
-                        <div className="add-cart-area">
-                          <button className="add-to-cart" href="./cart.html">
-                            Add to cart
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid">
-                      <div className="product-pic">
-                        <img src={product2} alt='' />
-                        <span className="theme-badge-2">12% off</span>
-                        <div className="actions">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Favourite</title>{" "}
-                                  <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Shuffle</title>{" "}
-                                  <path d="M21 16.0399H17.7707C15.8164 16.0399 13.9845 14.9697 12.8611 13.1716L10.7973 9.86831C9.67384 8.07022 7.84196 7 5.88762 7L3 7" />{" "}
-                                  <path d="M21 7H17.7707C15.8164 7 13.9845 8.18388 12.8611 10.1729L10.7973 13.8271C9.67384 15.8161 7.84196 17 5.88762 17L3 17" />{" "}
-                                  <path d="M19 4L22 7L19 10" />{" "}
-                                  <path d="M19 13L22 16L19 19" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="quickview_btn"
-                                data-bs-toggle="modal"
-                                href="#quickview_popup"
-                                role="button"
-                                tabindex="0"
+                                {" "}
+                                <title>Shuffle</title>{" "}
+                                <path d="M21 16.0399H17.7707C15.8164 16.0399 13.9845 14.9697 12.8611 13.1716L10.7973 9.86831C9.67384 8.07022 7.84196 7 5.88762 7L3 7" />{" "}
+                                <path d="M21 7H17.7707C15.8164 7 13.9845 8.18388 12.8611 10.1729L10.7973 13.8271C9.67384 15.8161 7.84196 17 5.88762 17L3 17" />{" "}
+                                <path d="M19 4L22 7L19 10" />{" "}
+                                <path d="M19 13L22 16L19 19" />{" "}
+                              </svg>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="quickview_btn"
+                              data-bs-toggle="modal"
+                              href="#quickview_popup"
+                              role="button"
+                              tabindex="0"
+                            >
+                              <svg
+                                width="48px"
+                                height="48px"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                                stroke="#2329D6"
+                                stroke-width="1"
+                                stroke-linecap="square"
+                                stroke-linejoin="miter"
+                                fill="none"
+                                color="#2329D6"
                               >
-                                <svg
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Visible (eye)</title>{" "}
-                                  <path d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />{" "}
-                                  <circle cx="12" cy="12" r="3" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
+                                {" "}
+                                <title>Visible (eye)</title>{" "}
+                                <path d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />{" "}
+                                <circle cx="12" cy="12" r="3" />{" "}
+                              </svg>
+                            </a>
+                          </li>
+                        </ul>
                       </div>
-                      <div className="details">
-                        <h4>
-                          <a href="#">Mac Mini</a>
-                        </h4>
-                        <p>
-                          <a href="#">
-                            Apple MacBook Pro13.3″ Laptop with new Touch bar
-                            ID{" "}
-                          </a>
-                        </p>
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star-half-alt"></i>
-                        </div>
-                        <span className="price">
-                          <ins>
-                            <span className="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                  $
-                                </span>
-                                471.48
-                              </bdi>
-                            </span>
-                          </ins>
-                          <del aria-hidden="true">
-                            <span className="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                  $
-                                </span>
-                                904.21
-                              </bdi>
-                            </span>
-                          </del>
-                        </span>
-                        <div className="add-cart-area">
-                          <a href="./cart.html">
-                            <button className="add-to-cart">
-                              Add to cart
-                            </button>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid">
-                      <div className="product-pic">
-                        <img src={product4} alt='' />
-                        <span className="theme-badge">Sale</span>
-                        <div className="actions">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Favourite</title>{" "}
-                                  <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Shuffle</title>{" "}
-                                  <path d="M21 16.0399H17.7707C15.8164 16.0399 13.9845 14.9697 12.8611 13.1716L10.7973 9.86831C9.67384 8.07022 7.84196 7 5.88762 7L3 7" />{" "}
-                                  <path d="M21 7H17.7707C15.8164 7 13.9845 8.18388 12.8611 10.1729L10.7973 13.8271C9.67384 15.8161 7.84196 17 5.88762 17L3 17" />{" "}
-                                  <path d="M19 4L22 7L19 10" />{" "}
-                                  <path d="M19 13L22 16L19 19" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="quickview_btn"
-                                data-bs-toggle="modal"
-                                href="#quickview_popup"
-                                role="button"
-                                tabindex="0"
-                              >
-                                <svg
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Visible (eye)</title>{" "}
-                                  <path d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />{" "}
-                                  <circle cx="12" cy="12" r="3" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="details">
-                        <h4>
-                          <a href="#">iPad mini</a>
-                        </h4>
-                        <p>
-                          <a href="#">
-                            The ultimate iPad experience all over the world
-                            with coll model{" "}
-                          </a>
-                        </p>
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star-half-alt"></i>
-                        </div>
-                        <span className="price">
-                          <ins>
-                            <span className="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                  $
-                                </span>
-                                471.48
-                              </bdi>
-                            </span>
-                          </ins>
-                        </span>
-                        <div className="add-cart-area">
-                          <button className="add-to-cart">Add to cart</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid">
-                      <div className="product-pic">
-                        <img src={imac} alt='' />
-                        <span className="theme-badge-2">25% off</span>
-                        <div className="actions">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Favourite</title>{" "}
-                                  <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Shuffle</title>{" "}
-                                  <path d="M21 16.0399H17.7707C15.8164 16.0399 13.9845 14.9697 12.8611 13.1716L10.7973 9.86831C9.67384 8.07022 7.84196 7 5.88762 7L3 7" />{" "}
-                                  <path d="M21 7H17.7707C15.8164 7 13.9845 8.18388 12.8611 10.1729L10.7973 13.8271C9.67384 15.8161 7.84196 17 5.88762 17L3 17" />{" "}
-                                  <path d="M19 4L22 7L19 10" />{" "}
-                                  <path d="M19 13L22 16L19 19" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="quickview_btn"
-                                data-bs-toggle="modal"
-                                href="#quickview_popup"
-                                role="button"
-                                tabindex="0"
-                              >
-                                <svg
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Visible (eye)</title>{" "}
-                                  <path d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />{" "}
-                                  <circle cx="12" cy="12" r="3" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="details">
-                        <h4>
-                          <a href="#">Imac 29"</a>
-                        </h4>
-                        <p>
-                          <a href="#">
-                            Apple iMac 29″ Laptop with new Touch bar ID for
-                            you{" "}
-                          </a>
-                        </p>
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star-half-alt"></i>
-                        </div>
-                        <span className="price">
-                          <ins>
-                            <span className="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                  $
-                                </span>
-                                471.48
-                              </bdi>
-                            </span>
-                          </ins>
-                          <del aria-hidden="true">
-                            <span className="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                  $
-                                </span>
-                                904.21
-                              </bdi>
-                            </span>
-                          </del>
-                        </span>
-                        <div className="add-cart-area">
-                          <button className="add-to-cart">Add to cart</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid">
-                      <div className="product-pic">
-                        <img src={iphone13} alt='' />
-                        <div className="actions">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Favourite</title>{" "}
-                                  <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <svg
-                                  role="img"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Shuffle</title>{" "}
-                                  <path d="M21 16.0399H17.7707C15.8164 16.0399 13.9845 14.9697 12.8611 13.1716L10.7973 9.86831C9.67384 8.07022 7.84196 7 5.88762 7L3 7" />{" "}
-                                  <path d="M21 7H17.7707C15.8164 7 13.9845 8.18388 12.8611 10.1729L10.7973 13.8271C9.67384 15.8161 7.84196 17 5.88762 17L3 17" />{" "}
-                                  <path d="M19 4L22 7L19 10" />{" "}
-                                  <path d="M19 13L22 16L19 19" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="quickview_btn"
-                                data-bs-toggle="modal"
-                                href="#quickview_popup"
-                                role="button"
-                                tabindex="0"
-                              >
-                                <svg
-                                  width="48px"
-                                  height="48px"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  stroke="#2329D6"
-                                  stroke-width="1"
-                                  stroke-linecap="square"
-                                  stroke-linejoin="miter"
-                                  fill="none"
-                                  color="#2329D6"
-                                >
-                                  {" "}
-                                  <title>Visible (eye)</title>{" "}
-                                  <path d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />{" "}
-                                  <circle cx="12" cy="12" r="3" />{" "}
-                                </svg>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="details">
-                        <h4>
-                          <a href="#">iPhone 13</a>
-                        </h4>
-                        <p>
-                          <a href="#">
-                            A dramatically more powerful camera system a
-                            display
-                          </a>
-                        </p>
-                        <div className="rating">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star-half-alt"></i>
-                        </div>
-                        <span className="price">
-                          <ins>
-                            <span className="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                  $
-                                </span>
-                                471.48
-                              </bdi>
-                            </span>
-                          </ins>
-                        </span>
-                        <div className="add-cart-area">
-                          <button className="add-to-cart">Add to cart</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="top_category_wrap">
-                  <div className="sec-title-link">
-                    <h3>Top categories</h3>
-                  </div>
-                  <div
-                    className="top_category_carousel2"
-                    data-slick='{"dots": false}'
-                  >
-                    <div className="slider_item">
-                      <div className="category_boxed">
-                        <a href="#!">
-                          <span className="item_image">
-                            <img src={category1} alt="image_not_found" />
-                          </span>
-                          <span className="item_title">Men's Watches</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="slider_item">
-                      <div className="category_boxed">
-                        <a href="#!">
-                          <span className="item_image">
-                            <img src={category2} alt="image_not_found" />
-                          </span>
-                          <span className="item_title">iPad</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="slider_item">
-                      <div className="category_boxed">
-                        <a href="#!">
-                          <span className="item_image">
-                            <img src={category3} alt="image_not_found" />
-                          </span>
-                          <span className="item_title">iPhone</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="slider_item">
-                      <div className="category_boxed">
-                        <a href="#!">
-                          <span className="item_image">
-                            <img src={category4} alt="image_not_found" />
-                          </span>
-                          <span className="item_title">Headphone</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="slider_item">
-                      <div className="category_boxed">
-                        <a href="#!">
-                          <span className="item_image">
-                            <img src={category5} alt="image_not_found" />
-                          </span>
-                          <span className="item_title">Mac Mini</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="slider_item">
-                      <div className="category_boxed">
-                        <a href="#!">
-                          <span className="item_image">
-                            <img src={category1} alt="image_not_found" />
-                          </span>
-                          <span className="item_title">Men's Watches</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="slider_item">
-                      <div className="category_boxed">
-                        <a href="#!">
-                          <span className="item_image">
-                            <img src={category2} alt="image_not_found" />
-                          </span>
-                          <span className="item_title">CCTV Camera</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="slider_item">
-                      <div className="category_boxed">
-                        <a href="#!">
-                          <span className="item_image">
-                            <img src={cctv} alt="image_not_found" />
-                          </span>
-                          <span className="item_title">CCTV Camera</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="carousel_nav carousel-nav-top-right">
-                    <button type="button" className="tc_left_arrow">
-                      <i className="fal fa-long-arrow-alt-left"></i>
-                    </button>
-                    <button type="button" className="tc_right_arrow">
-                      <i className="fal fa-long-arrow-alt-right"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 order-lg-9">
-                <div className="product-sidebar">
-                  <div className="widget latest_product_carousel">
-                    <div className="title_wrap">
-                      <h3 className="area_title">Latest Products</h3>
-                      <div className="carousel_nav">
-                        <button type="button" className="vs4i_left_arrow">
-                          <i className="fal fa-angle-left"></i>
-                        </button>
-                        <button type="button" className="vs4i_right_arrow">
-                          <i className="fal fa-angle-right"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      className="vertical_slider_4item"
-                      data-slick='{"dots": false}'
-                    >
-                      <div className="slider_item">
-                        <div className="small_product_layout">
-                          <a className="item_image" href="shop_details.html">
-                            <img src={product1} alt="image_not_found" />
-                          </a>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <a href="shop_details.html">Product Sample</a>
-                            </h3>
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
-                              </li>
-                            </ul>
-                            <div className="item_price">
-                              <span>$690.99</span>
-                              <del>$720.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="slider_item">
-                        <div className="small_product_layout">
-                          <a className="item_image" href="shop_details.html">
-                            <img src={product_2} alt="image_not_found" />
-                          </a>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <a href="shop_details.html">Product Sample</a>
-                            </h3>
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
-                              </li>
-                            </ul>
-                            <div className="item_price">
-                              <span>$690.99</span>
-                              <del>$720.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="slider_item">
-                        <div className="small_product_layout">
-                          <a className="item_image" href="shop_details.html">
-                            {/* <img src="assets/images/latest_product/latest_product_3.png" alt="image_not_found"> */}
-                          </a>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <a href="shop_details.html">Product Sample</a>
-                            </h3>
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
-                              </li>
-                            </ul>
-                            <div className="item_price">
-                              <span>$690.99</span>
-                              <del>$720.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="slider_item">
-                        <div className="small_product_layout">
-                          <a className="item_image" href="shop_details.html">
-                            {/* <img src="assets/images/latest_product/latest_product_4.png" alt="image_not_found"> */}
-                          </a>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <a href="shop_details.html">Product Sample</a>
-                            </h3>
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
-                              </li>
-                            </ul>
-                            <div className="item_price">
-                              <span>$690.99</span>
-                              <del>$720.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="slider_item">
-                        <div className="small_product_layout">
-                          <a className="item_image" href="shop_details.html">
-                            {/* <img src="assets/images/latest_product/latest_product_1.png" alt="image_not_found"> */}
-                          </a>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <a href="shop_details.html">Product Sample</a>
-                            </h3>
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
-                              </li>
-                            </ul>
-                            <div className="item_price">
-                              <span>$690.99</span>
-                              <del>$720.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="slider_item">
-                        <div className="small_product_layout">
-                          <a className="item_image" href="shop_details.html">
-                            {/* <img src="assets/images/latest_product/latest_product_2.png" alt="image_not_found"> */}
-                          </a>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <a href="shop_details.html">Product Sample</a>
-                            </h3>
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
-                              </li>
-                            </ul>
-                            <div className="item_price">
-                              <span>$690.99</span>
-                              <del>$720.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="slider_item">
-                        <div className="small_product_layout">
-                          <a className="item_image" href="shop_details.html">
-                            {/* <img src="assets/images/latest_product/latest_product_3.png" alt="image_not_found"> */}
-                          </a>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <a href="shop_details.html">Product Sample</a>
-                            </h3>
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
-                              </li>
-                            </ul>
-                            <div className="item_price">
-                              <span>$690.99</span>
-                              <del>$720.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="slider_item">
-                        <div className="small_product_layout">
-                          <a className="item_image" href="shop_details.html">
-                            {/* <img src="assets/images/latest_product/latest_product_4.png" alt="image_not_found"> */}
-                          </a>
-                          <div className="item_content">
-                            <h3 className="item_title">
-                              <a href="shop_details.html">Product Sample</a>
-                            </h3>
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
-                              </li>
-                            </ul>
-                            <div className="item_price">
-                              <span>$690.99</span>
-                              <del>$720.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="widget product-add">
-                    <div className="product-img">
-                      {/* <img src="assets/images/shop/product_img_10.png" alt> */}
                     </div>
                     <div className="details">
-                      <h4>iPad pro</h4>
-                      <p>iPad pro with M1 chipe</p>
-                      <a className="btn btn_primary" href="#">
-                        Start Buying
-                      </a>
+                      <h4>
+                        <a href="#">{product.name}</a>
+                      </h4>
+                      <p>
+                        <a href="#">
+                          {product.description}
+                        </a>
+                      </p>
+                      <div className="rating">
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star-half-alt"></i>
+                      </div>
+                      <span className="price">
+                        <ins>
+                          <span className="woocommerce-Price-amount amount">
+                            <bdi>
+                              <span className="woocommerce-Price-currencySymbol">
+                                $
+                              </span>
+                              471.48
+                            </bdi>
+                          </span>
+                        </ins>
+                      </span>
+                      <div className="add-cart-area">
+                        <button className="add-to-cart" href="./cart.html">
+                          Add to cart
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <div className="widget audio-widget">
-                    <h5>
-                      Audio <span>5</span>
-                    </h5>
-                    <ul>
-                      <li>
-                        <a href="#">MI headphone</a>
-                      </li>
-                      <li>
-                        <a href="#">Bluetooth AirPods</a>
-                      </li>
-                      <li>
-                        <a href="#">Music system</a>
-                      </li>
-                      <li>
-                        <a href="#">JBL bar 5.1</a>
-                      </li>
-                      <li>
-                        <a href="#">Edifier Computer Speaker</a>
-                      </li>
-                      <li>
-                        <a href="#">Macbook pro</a>
-                      </li>
-                      <li>
-                        <a href="#">Men's watch</a>
-                      </li>
-                      <li>
-                        <a href="#">Washing metchin</a>
-                      </li>
-                    </ul>
-                  </div>
+                ))
+              ) : (
+                <p>No products available</p>
+              )}
+            </div>
+            <Row>
+              <Col className="d-flex justify-content-between">
+                <Button
+                  onClick={() => setPageNo(prevPageNo => Math.max(prevPageNo - 1, 0))}
+                  disabled={pageNo === 0}
+                >
+                  Previous
+                </Button>
+                <Button onClick={() => setPageNo(prevPageNo => prevPageNo + 1)}>
+                  Next
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+      
                 </div>
+
+                
               </div>
+            
             </div>
           </div>
         </section>
@@ -1526,7 +600,7 @@ export const Home = () => {
                 <div className="new-arrivals-grids clearfix">
                   <div className="grid">
                     <div className="product-pic">
-                      {/* <img src="assets/images/shop/product-img-28.png" alt> */}
+                      <img src={pro} alt="" />
                       <div className="actions">
                         <ul>
                           <li>
@@ -1966,393 +1040,10 @@ export const Home = () => {
             </div>
           </div>
         </section>
-
-        <div className="brand_section pb-0">
-          <div className="container">
-            <div className="brand_carousel">
-              <div className="slider_item">
-                <a className="product_brand_logo" href="#!">
-                  {/* <img src="assets/images/brand/brand_1.png" alt="image_not_found"> */}
-                  {/* <img src="assets/images/brand/brand_1.png" alt="image_not_found"> */}
-                </a>
-              </div>
-              <div className="slider_item">
-                <a className="product_brand_logo" href="#!">
-                  {/* <img src="assets/images/brand/brand_2.png" alt="image_not_found"> */}
-                  {/* <img src="assets/images/brand/brand_2.png" alt="image_not_found"> */}
-                </a>
-              </div>
-              <div className="slider_item">
-                <a className="product_brand_logo" href="#!">
-                  {/* <img src="assets/images/brand/brand_3.png" alt="image_not_found"> */}
-                  {/* <img src="assets/images/brand/brand_3.png" alt="image_not_found"> */}
-                </a>
-              </div>
-              <div className="slider_item">
-                <a className="product_brand_logo" href="#!">
-                  {/* <img src="assets/images/brand/brand_4.png" alt="image_not_found"> */}
-                  {/* <img src="assets/images/brand/brand_4.png" alt="image_not_found"> */}
-                </a>
-              </div>
-              <div className="slider_item">
-                <a className="product_brand_logo" href="#!">
-                  {/* <img src="assets/images/brand/brand_5.png" alt="image_not_found"> */}
-                  {/* <img src="assets/images/brand/brand_5.png" alt="image_not_found"> */}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <section className="viewed_products_section section_space">
-          <div className="container">
-            <div className="sec-title-link mb-0">
-              <h3>Recently Viewed Products</h3>
-            </div>
-
-            <div className="viewed_products_wrap arrows_topright">
-              <div
-                className="viewed_products_carousel row"
-                data-slick='{"dots": false}'
-              >
-                <div className="slider_item col">
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_1.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">Electronics</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_2.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">PC & Laptop</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="slider_item col">
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_3.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">Tables & Mobiles</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_4.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">Accessories</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="slider_item col">
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_5.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">TV & Audio</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_6.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">Games & Consoles</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="slider_item col">
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_1.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">Electronics</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_2.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">PC & Laptop</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="slider_item col">
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      {/* <img src="assets/images/viewed_products/viewed_product_img_3.png" alt="image_not_found"> */}
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">Tables & Mobiles</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      <img src={view10} alt="image_not_found" />
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">Accessories</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="slider_item col">
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      <img src={view11} alt="image_not_found" />
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">TV & Audio</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="viewed_product_item">
-                    <div className="item_image">
-                      <img src={view12} alt="image_not_found" />
-                    </div>
-                    <div className="item_content">
-                      <h3 className="item_title">Games & Consoles</h3>
-                      <ul className="ul_li_block">
-                        <li>
-                          <a href="#!">Computers</a>
-                        </li>
-                        <li>
-                          <a href="#!">Laptop</a>
-                        </li>
-                        <li>
-                          <a href="#!">Macbook</a>
-                        </li>
-                        <li>
-                          <a href="#!">Accessories</a>
-                        </li>
-                        <li>
-                          <a href="#!">More...</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="carousel_nav">
-                <button type="button" className="vpc_left_arrow">
-                  <i className="fal fa-long-arrow-alt-left"></i>
-                </button>
-                <button type="button" className="vpc_right_arrow">
-                  <i className="fal fa-long-arrow-alt-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        
 
       </main>
       {/* </Wrapper> */}
     </>
   );
-};
+}

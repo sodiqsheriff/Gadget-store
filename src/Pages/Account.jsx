@@ -3,7 +3,7 @@ import { Wrapper } from '../_Component/Wrapper'
 
 export const Account = () => {
   return (
-    <Wrapper>
+    <>
           <section className="account_section section_space">
                 <div className="container">
                     <div className="row">
@@ -68,6 +68,6 @@ export const Account = () => {
                     </div>
                 </div>
             </section>
-    </Wrapper>
+    </>
   )
 }

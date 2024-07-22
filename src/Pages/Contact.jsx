@@ -1,9 +1,7 @@
 import React from 'react'
-import { Wrapper } from '../_Component/Wrapper'
-
+import leaf from "../assets/images/leaf.png"
 export const Contact = () => {
   return (
-    <Wrapper>
          <section className="contact_section section_space">
                 <div className="container">
                     <div className="row">
@@ -11,7 +9,7 @@ export const Contact = () => {
                             <div className="contact_info_wrap">
                                 <h3 className="contact_title">Address <span>Information</span></h3>
                                 <div className="decoration_image">
-                                    <img src="assets/images/leaf.png" alt="image_not_found" />
+                                    <img src={leaf} alt="image_not_found" />
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                 <div className="row">
@@ -48,7 +46,7 @@ export const Contact = () => {
                             <div className="contact_info_wrap">
                                 <h3 className="contact_title">Get In Touch <span>Inform Us</span></h3>
                                 <div className="decoration_image">
-                                    <img src="assets/images/leaf.png" alt="image_not_found" />
+                                    <img src={leaf} alt="image_not_found" />
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                 <form action="#">
@@ -71,13 +69,12 @@ export const Contact = () => {
                                         <textarea id="contact-form-message" name="message" placeholder="Message"></textarea>
                                     </div>
                                     <div id="form-msg"></div>
-                                    <button id="contact-form-submit" type="submit" className="btn btn_dark">Send Message</button>
+                                    <button id="contact-form-submit" type="submit" className="btn btn" style={{background: '#2563EB', color: 'white'}}>Send Message</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-    </Wrapper>
-  )
+  );
 }

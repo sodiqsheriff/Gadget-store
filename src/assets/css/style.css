@@ -1286,7 +1286,7 @@ hr {
 /* main menu - start */
 @media screen and (min-width: 992px) {
   .main_menu_list {
-    padding-left: 32px;
+    padding-left: 72px;
   }
 }
 .main_menu_list > li {
@@ -1297,7 +1297,7 @@ hr {
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .main_menu_list > li:not(:last-child) {
-    margin-right: 25px;
+    margin-right: 45px;
   }
 }
 .main_menu_list > li > a {
@@ -6809,7 +6809,7 @@ hr {
 }
 
 .promotion_section {
-  margin-top: 80px;
+  margin-top: 20px;
 }
 .promotion_section .promotion_banner {
   background: #fafafa;

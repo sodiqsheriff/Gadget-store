@@ -1,9 +1,9 @@
 import React from 'react'
 import { Wrapper } from '../../_Component/Wrapper'
 
-export const Shop_list = () => {
+export const ShopList = () => {
   return (
-    <Wrapper>
+ <>
          <div className="breadcrumb_section">
                 <div className="container">
                     <ul className="breadcrumb_nav ul_li">
@@ -1402,6 +1402,6 @@ export const Shop_list = () => {
                     </div>
                 </div>
             </section>
-    </Wrapper>
+    </>
   )
 }

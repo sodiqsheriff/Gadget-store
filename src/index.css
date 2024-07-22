@@ -16,7 +16,7 @@
 /* CustomSlider.css */
 
 .slider_section {
-    padding: 50px 0;
+    padding: 5px 0;
   }
   
   .slider_item {
@@ -86,3 +86,53 @@
     background-color: blue;
   }
   
+  li> a{
+    text-decoration: none;
+  }
+  p> a{
+    text-decoration: none;
+  }
+  h4> a{
+    text-decoration: none;
+  }
+
+  /* src/App.css */
+.dropdwn {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdwn-toggle {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdwn-menu {
+  display: block;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  min-width: 160px;
+}
+
+.dropdwn-menu li {
+  padding: 8px 16px;
+}
+
+.dropdwn-menu li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.dropdwn-menu li:hover {
+  background-color: #f1f1f1;
+}

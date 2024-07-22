@@ -1,7 +1,7 @@
 import React from 'react'
-import { Shop_list } from './Shop_list'
+import { ShopList } from './ShopList'
 export const Shop = () => {
   return (
-    <Shop_list />
+    <ShopList />
   )
 }

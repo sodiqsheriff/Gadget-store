@@ -4,6 +4,7 @@ import logo from "../assets/images/logo.svg"
 import payment_icon from "../assets/images/payments_icon.png";
 import appstore from "../assets/images/app_store.png";
 import playstore from "../assets/images/play_store.png";
+import { IoLogoWhatsapp } from "react-icons/io";
 export const Footer = () => {
   return (
     <>
@@ -18,7 +19,7 @@ export const Footer = () => {
                 <form action="#!">
                     <div className="newsletter_form">
                         <input type="email" name="email" placeholder="Enter your email address" />
-                        <button type="submit" className="btn btn_secondary" style={{backgroundColor: 'blue', color: 'white'}}>Submit</button>
+                        <button type="submit" className="btn btn_secondary" style={{backgroundColor: 'black', color: 'white'}}>Submit</button>
                     </div>
                 </form>
             </div>
@@ -34,8 +35,8 @@ export const Footer = () => {
                   <div className="brand_logo">
                     <a
                       className="brand_link"
-                      href="index-2.html" style={{display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'black', fontWeight: 'bold',}}>     
-                         <img src={logo} srcset="assets/images/logo/logo_2x.png 2x" style={{}} alt="logo_not_found" />
+                      href="index-2.html" style={{display: 'flex', alignItems: 'center', textDecoration: 'none',gap: '0.3em', color: 'black', fontWeight: 'bold',}}>     
+                         <img src={logo} srcset="assets/images/logo/logo_2x.png 2x" style={{height:'3.5em',}} alt="logo_not_found" />
                       <h2 style={{fontWeight: 'bold'}}>
                         Gadget
                       </h2>
@@ -79,19 +80,17 @@ export const Footer = () => {
                   </h3>
                   <ul className="ul_li_block">
                     <li>
-                      <a href="">About Us</a>
+                      <Link to="/about">About Us</Link>
                     </li>
                     <li>
-                      <a href="" >Contact Us</a>
+                      <Link to="/contact" >Contact Us</Link>
+                    </li>
+                  
+                    <li>
+                      <Link to="/login" >Login</Link>
                     </li>
                     <li>
-                      <a href="" >Products</a>
-                    </li>
-                    <li>
-                      <a href="" >Login</a>
-                    </li>
-                    <li>
-                      <a href="" >Sign Up</a>
+                      <Link to="/signup" >Sign Up</Link>
                     </li>
                   </ul>
                 </div>
@@ -104,22 +103,13 @@ export const Footer = () => {
                   </h3>
                   <ul className="ul_li_block">
                     <li>
-                      <a href="" >My Account</a>
+                      <Link to="/account" >My Account</Link>
                     </li>
                     <li>
-                      <a href="" >Orders</a>
+                      <Link to="/privacy" >Privacy Policy</Link>
                     </li>
                     <li>
-                      <a href="" >Tracking List</a>
-                    </li>
-                    <li>
-                      <a href="">Tearm</a>
-                    </li>
-                    <li>
-                      <a href="" >Privacy Policy</a>
-                    </li>
-                    <li>
-                      <a href="" >My Cart</a>
+                      <Link to="/cart" >My Cart</Link>
                     </li>
                   </ul>
                 </div>
@@ -128,7 +118,7 @@ export const Footer = () => {
               <div className="col col-lg-4 col-md-6 col-sm-6">
                 <div className="footer_widget footer_contact">
                   <h3 className="footer_widget_title text-uppercase">
-                    Contact Onfo
+                    Contact Info
                   </h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -145,9 +135,10 @@ export const Footer = () => {
                       </div>
                     </div>
                     <div className="livechat_btn clearfix">
-                      <a href="" className="btn border_primary" >
-                        Live Chat
-                      </a>
+                      <Link to="" className="" style={{display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'black', cursor: 'pointer'}} >
+                      <IoLogoWhatsapp className='' style={{color: 'green', fontSize: '3em'}}/>
+                       Whatsapp
+                      </Link>
                     </div>
                   </div>
                   <ul className="store_btns_group ul_li">

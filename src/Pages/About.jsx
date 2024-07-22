@@ -3,7 +3,6 @@ import { Wrapper } from '../_Component/Wrapper'
 
 export const About = () => {
   return (
-    <Wrapper>
        <section className="about_section section_space">
 			<div className="container">
 				<div className="row align-items-center">
@@ -38,6 +37,5 @@ export const About = () => {
 				</div>
 			</div>
 		</section>
-    </Wrapper>
   )
 }

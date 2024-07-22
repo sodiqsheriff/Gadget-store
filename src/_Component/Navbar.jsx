@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import flug from "../../src/assets/images/flug/flug_uk.png";
-
 import image1 from '../assets/images/cart/cart_img_1.jpg';
 import image2 from '../assets/images/cart/cart_img_2.jpg';
 import image3 from '../assets/images/cart/cart_img_3.jpg';
-
-
 import logo from "../../src/assets/images/logo.svg";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { Container, Row, Col, Form } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 export const NavigationBar = () => {
   const [visible, setVisible] = useState(false);
 
@@ -22,9 +19,9 @@ export const NavigationBar = () => {
       <div className="body_wrap">
         {/* backtotop - start */}
         <div className="backtotop">
-          <a href="#" className="scroll">
+          <Link to="" className="scroll">
             <i className="far fa-arrow-up"></i>
-          </a>
+          </Link>
         </div>
         {/* backtotop - end */}
 
@@ -33,13 +30,13 @@ export const NavigationBar = () => {
         {/* preloader - end */}
 
         {/* header_section - start */}
-        <header className="header_section header-style-no-collapse">
+        <header className="header_section header-style-no-collapse  border-0">
           <div className="header_middle">
             <Container>
               <Row className="align-items-center">
                 <Col lg={3} md={3} sm={12}>
                   <div className="brand_logo">
-                    <a
+                    <Link
                       className="brand_link"
                       style={{
                         display: "flex",
@@ -63,7 +60,7 @@ export const NavigationBar = () => {
                       >
                         Gadget
                       </h1>
-                    </a>
+                    </Link>
                   </div>
                 </Col>
                 <Col lg={6} md={6} sm={12}>
@@ -108,6 +105,27 @@ export const NavigationBar = () => {
                   >
                     <i className="fal fa-bars"></i>
                   </button>
+                  <div className=""  style={{display:'flex', alignItems:'end', gap: '3px',justifyContent: 'end'}}>
+                  <Link to="/account">
+                        <svg
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="30px"
+                          height="30px"
+                          viewBox="0 0 24 24"
+                          stroke="#051d43"
+                          stroke-width="1"
+                          stroke-linecap="square"
+                          stroke-linejoin="miter"
+                          fill="none"
+                          color="#2329D6"
+                        >
+                          {" "}
+                          <title id="personIconTitle">Person</title>{" "}
+                          <path d="M4,20 C4,17 8,17 10,15 C11,14 8,14 8,9 C8,5.667 9.333,4 12,4 C14.667,4 16,5.667 16,9 C16,14 13,14 14,15 C16,17 20,17 20,20" />{" "}
+                        </svg>
+                      </Link>
+                      <Link to='/cart'>
                   <button
                     type="button"
                     className="cart_btn"
@@ -119,12 +137,14 @@ export const NavigationBar = () => {
                     </span>
                     <span className="cart_amount">$909.00</span>
                   </button>
+                  </Link>
+                  </div>
                 </Col>
               </Row>
             </Container>
           </div>
 
-          <div className="header_bottom">
+          <div className="header_bottom ">
             <div className="container">
               <div className="row align-items-center">
                 <div className="col col-md-3">
@@ -156,42 +176,41 @@ export const NavigationBar = () => {
                 <div className="col col-md-6">
                   <nav className="main_menu navbar navbar-expand-lg">
                     <div
-                      className="main_menu_inner collapse navbar-collapse"
-                      id="main_menu_dropdown"
+                      className="main_menu_inner collap navbar-collapse"
+                      id="main_menu_dron"
                     >
                       <button type="button" className="offcanvas_close">
                         <i className="fal fa-times"></i>
                       </button>
                       <ul className="main_menu_list ul_li">
-                        <li className="">
-                          <a className="nav-link" href="#" id="shop_submenu">
+                        <li>
+                          <Link to="" className="nav-link">
                             Home
-                          </a>
+                          </Link>
                         </li>
                         <li className="dropdown">
-                          <a
+                          <Link
                             className="nav-link"
-                            href="#"
+                            to="/shop"
                             id="shop_submenu"
                             role="button"
                           >
                             Shop
-                          </a>
+                          </Link>
                           <ul
                             className="submenu dropdown-menu"
                             aria-labelledby="shop_submenu"
                           >
-                            {/* <li><a href="shop_grid.html">Shop Grid</a></li> */}
                             <li>
-                              <a href="shop_list.html">Shop List</a>
+                              <a href="/shop">Shop List</a>
                             </li>
                             {/* <li><a href="shop_details.html">Shop Details</a></li> */}
                           </ul>
                         </li>
                         <li className="dropdown">
-                          <a
+                          <Link
                             className="nav-link"
-                            href="#"
+                            to=""
                             id="pages_submenu"
                             role="button"
                             data-bs-toggle="dropdown"
@@ -199,22 +218,22 @@ export const NavigationBar = () => {
                           >
                             {" "}
                             Pages{" "}
-                          </a>
+                          </Link>
                           <ul
                             className="submenu dropdown-menu"
                             aria-labelledby="pages_submenu"
                           >
                             <li>
-                              <a href="about.html">About Us</a>
+                              <Link href="about.html">About Us</Link>
                             </li>
                             <li>
-                              <a href="team.html">Team</a>
+                              <Link href="team.html">Team</Link>
                             </li>
                             <li>
-                              <a href="account.html">My Account</a>
+                              <Link href="account.html">My Account</Link>
                             </li>
                             <li>
-                              <a
+                              <Link
                                 href="register.html"
                                 style={{
                                   backgroundColor: "#2563EB",
@@ -222,18 +241,18 @@ export const NavigationBar = () => {
                                 }}
                               >
                                 Register
-                              </a>
+                              </Link>
                             </li>
                             <li className="dropdown">
-                              <a
-                                href="#"
+                              <Link
+                               to="#"
                                 id="cart_submenu"
                                 role="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                               >
                                 Shopping Cart
-                              </a>
+                              </Link>
                               <ul
                                 className="submenu dropdown-menu"
                                 aria-labelledby="cart_submenu"
@@ -266,9 +285,9 @@ export const NavigationBar = () => {
                           </ul>
                         </li>
                         <li>
-                          <a className="nav-link" href="contact.html">
+                          <Link className="" to="/contact">
                             Contact Us
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
@@ -278,96 +297,9 @@ export const NavigationBar = () => {
 
                 <div className="col col-md-3">
                   <ul className="header_icons_group ul_li_right">
+                   
                     <li>
-                      <a href="contact.html">
-                        <svg
-                          role="img"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="30px"
-                          height="30px"
-                          viewBox="0 0 24 24"
-                          stroke="#051d43"
-                          stroke-width="1"
-                          stroke-linecap="square"
-                          stroke-linejoin="miter"
-                          fill="none"
-                          color="#2329D6"
-                        >
-                          {" "}
-                          <title id="locationIconTitle">Location</title>{" "}
-                          <path d="M12,21 C16,16.8 18,12.8 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 C6,12.8 8,16.8 12,21 Z" />{" "}
-                          <circle cx="12" cy="9" r="1" />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="compare.html">
-                        <svg
-                          role="img"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="30px"
-                          height="30px"
-                          viewBox="0 0 24 24"
-                          stroke="#051d43"
-                          stroke-width="1"
-                          stroke-linecap="square"
-                          stroke-linejoin="miter"
-                          fill="none"
-                          color="#2329D6"
-                        >
-                          {" "}
-                          <title id="rotateIconTitle">Rotate</title>{" "}
-                          <path d="M22 12l-3 3-3-3" />{" "}
-                          <path d="M2 12l3-3 3 3" />{" "}
-                          <path d="M19.016 14v-1.95A7.05 7.05 0 0 0 8 6.22" />{" "}
-                          <path d="M16.016 17.845A7.05 7.05 0 0 1 5 12.015V10" />{" "}
-                          <path stroke-linecap="round" d="M5 10V9" />{" "}
-                          <path stroke-linecap="round" d="M19 15v-1" />{" "}
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="wishlist.html">
-                        <svg
-                          role="img"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="30px"
-                          height="30px"
-                          viewBox="0 0 24 24"
-                          stroke="#051d43"
-                          stroke-width="1"
-                          stroke-linecap="square"
-                          stroke-linejoin="miter"
-                          fill="none"
-                          color="#2329D6"
-                        >
-                          {" "}
-                          <title>Favourite</title>{" "}
-                          <path d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />{" "}
-                        </svg>
-                        <span className="wishlist_counter">3</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="account.html">
-                        <svg
-                          role="img"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="30px"
-                          height="30px"
-                          viewBox="0 0 24 24"
-                          stroke="#051d43"
-                          stroke-width="1"
-                          stroke-linecap="square"
-                          stroke-linejoin="miter"
-                          fill="none"
-                          color="#2329D6"
-                        >
-                          {" "}
-                          <title id="personIconTitle">Person</title>{" "}
-                          <path d="M4,20 C4,17 8,17 10,15 C11,14 8,14 8,9 C8,5.667 9.333,4 12,4 C14.667,4 16,5.667 16,9 C16,14 13,14 14,15 C16,17 20,17 20,20" />{" "}
-                        </svg>
-                      </a>
+                  
                     </li>
                   </ul>
                 </div>
