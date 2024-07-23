@@ -11,7 +11,6 @@ const initialDataItems = [
 export const Cart = () => {
   const [dataItems, setDataItems] = useState(initialDataItems); // State to hold the list of items
   const [quantities, setQuantities] = useState({}); // State to hold quantities for each item
-  const maxQuantity = 10; // Define a fixed maximum quantity
 
   // Initialize quantities state when dataItems change
   useEffect(() => {
@@ -26,7 +25,7 @@ export const Cart = () => {
   const increment = (id) => {
     setQuantities((prevQuantities) => ({
       ...prevQuantities,
-      [id]: Math.min(prevQuantities[id] + 1, maxQuantity),
+      [id]: prevQuantities[id] + 1,
     }));
   };
 
@@ -43,6 +42,11 @@ export const Cart = () => {
     setDataItems((prevDataItems) =>
       prevDataItems.filter((item) => item.id !== id)
     );
+    setQuantities((prevQuantities) => {
+      const newQuantities = { ...prevQuantities };
+      delete newQuantities[id];
+      return newQuantities;
+    });
   };
   return (
       <main>
@@ -208,7 +212,6 @@ export const Cart = () => {
                               type="button"
                               className="input_number_increment"
                               onClick={() => increment(dataItem.id)}
-                              disabled={quantities[dataItem.id] === maxQuantity}
                             >
                               <i className="fal fa-plus"></i>
                             </button>
@@ -216,7 +219,7 @@ export const Cart = () => {
                         </form>
                       </td>
                       <td className="text-center">
-                        <span className="price_text">$10.50</span>
+                        <span className="price_text">{(dataItem.price * quantities[dataItem.id]).toFixed(2)}</span>
                       </td>
                       <td className="text-center">
                         <button
