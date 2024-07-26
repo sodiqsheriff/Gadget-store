@@ -1,7 +1,8 @@
 import React from 'react'
-import { Wrapper } from '../../_Component/Wrapper'
-
+import { useLocation } from 'react-router-dom'
 export const ShopList = () => {
+    const location = useLocation();
+    const { categories } = location.state || { categories: [] };
   return (
  <>
          <div className="breadcrumb_section">
@@ -1030,20 +1031,18 @@ export const ShopList = () => {
                                                     </div>
                                                 </div>
                                                 <div className="details">
-                                                    <h4><a href="#">Macbook Pro</a></h4>
-                                                    <p><a href="#">Apple MacBook Pro13.3″ Laptop with Touch ID </a></p>
-                                                    <div className="rating">
-                                                        <i className="fas fa-star"></i>
-                                                        <i className="fas fa-star"></i>
-                                                        <i className="fas fa-star"></i>
-                                                        <i className="fas fa-star"></i>
-                                                        <i className="fas fa-star-half-alt"></i>
-                                                    </div>
-                                                    <span className="price">
+                                                    
+                                                <div>
+        {categories.length > 0 ? (
+          categories.map((category) => (
+            <div key={category.categorId}>
+              <img src={category.categoryImage} alt={category.categoryName} width="100" />
+              <h2>{category.categoryName}</h2>
+              <span className="price">
                                                         <ins>
                                                             <span className="woocommerce-Price-amount amount">
                                                                 <bdi> <span
-                                                                        className="woocommerce-Price-currencySymbol">$</span>471.48
+                                                                        className="woocommerce-Price-currencySymbol">$</span>{category.categoryPrice}
                                                                 </bdi>
                                                             </span>
                                                         </ins>
@@ -1051,7 +1050,16 @@ export const ShopList = () => {
                                                     <div className="add-cart-area">
                                                         <button className="add-to-cart">Add to cart</button>
                                                     </div>
+                                                    
+            </div>
+          ))
+        ) : (
+          <p>No category found</p>
+        )}
+      </div>
+                                                  
                                                 </div>
+
                                             </div>
                                             <div className="grid clearfix">
                                                 <div className="product-pic">

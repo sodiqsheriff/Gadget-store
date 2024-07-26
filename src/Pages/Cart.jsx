@@ -1,53 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Wrapper } from "../_Component/Wrapper";
 import image1 from "../assets/wactch.svg";
 import image2 from "../assets/wactch.svg";
+import { CartContext } from "../_Component/CartContext";
 
-const initialDataItems = [
-  { id: 1, title: "iPhone", image: image1, price: "$10.48", total: "" },
-  { id: 2, title: "Samsung", image: image2, price: "$2.56", total: "" },
-];
+
 
 export const Cart = () => {
-  const [dataItems, setDataItems] = useState(initialDataItems); // State to hold the list of items
-  const [quantities, setQuantities] = useState({}); // State to hold quantities for each item
+  const { cartItems, removeFromCart } = useContext(CartContext);
 
-  // Initialize quantities state when dataItems change
-  useEffect(() => {
-    const initialQuantities = {};
-    dataItems.forEach((item) => {
-      initialQuantities[item.id] = 1; // Start each item's quantity at 1
-    });
-    setQuantities(initialQuantities);
-  }, [dataItems]);
-
-  // Handle increment
-  const increment = (id) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: prevQuantities[id] + 1,
-    }));
-  };
-
-  // Handle decrement
-  const decrement = (id) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: Math.max(prevQuantities[id] - 1, 1),
-    }));
-  };
-
-  // Handle delete
-  const handleDelete = (id) => {
-    setDataItems((prevDataItems) =>
-      prevDataItems.filter((item) => item.id !== id)
-    );
-    setQuantities((prevQuantities) => {
-      const newQuantities = { ...prevQuantities };
-      delete newQuantities[id];
-      return newQuantities;
-    });
-  };
   return (
       <main>
         {/* <!-- sidebar cart - start
@@ -178,60 +139,23 @@ export const Cart = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {dataItems.map((dataItem) => (
-                    <tr key={dataItem.id}>
-                      <td>
-                        <div className="cart_product">
-                          <img src={dataItem.image} alt="image_not_found" />
-                          <h3>
-                            <a href="shop_details.html">{dataItem.title}</a>
-                          </h3>
-                        </div>
-                      </td>
-                      <td className="text-center">
-                        <span className="price_text">{dataItem.price}</span>
-                      </td>
-                      <td className="text-center">
-                        <form action="#">
-                          <div className="quantity_input">
-                            <button
-                              type="button"
-                              className="input_number_decrement"
-                              onClick={() => decrement(dataItem.id)}
-                              disabled={quantities[dataItem.id] === 1}
-                            >
-                              <i className="fal fa-minus"></i>
-                            </button>
-                            <input
-                              className="input_number"
-                              type="text"
-                              value={quantities[dataItem.id]}
-                              readOnly
-                            />
-                            <button
-                              type="button"
-                              className="input_number_increment"
-                              onClick={() => increment(dataItem.id)}
-                            >
-                              <i className="fal fa-plus"></i>
-                            </button>
-                          </div>
-                        </form>
-                      </td>
-                      <td className="text-center">
-                        <span className="price_text">{(dataItem.price * quantities[dataItem.id]).toFixed(2)}</span>
-                      </td>
-                      <td className="text-center">
-                        <button
-                          type="button"
-                          className="remove_btn"
-                          onClick={() => handleDelete(dataItem.id)}
-                        >
-                          <i className="fal fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                <div>
+      <h1>Cart</h1>
+      {cartItems.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        cartItems.map((item) => (
+          <div key={item.id}>
+            <img src={item.image} alt={item.name} width="100" />
+            <span>{item.name}</span>
+            <span>Quantity: {item.quantity}</span>
+            <span>Price: ${item.price}</span>
+            <span>Total Price: ${(item.price * item.quantity).toFixed(2)}</span>
+            <button onClick={() => removeFromCart(item.id)}>Remove</button>
+          </div>
+        ))
+      )}
+    </div>
                 </tbody>
               </table>
             </div>

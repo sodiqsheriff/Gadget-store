@@ -1,15 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import image1 from '../assets/images/cart/cart_img_1.jpg';
 import image2 from '../assets/images/cart/cart_img_2.jpg';
 import image3 from '../assets/images/cart/cart_img_3.jpg';
 import logo from "../../src/assets/images/logo.svg";
 import { HiMenuAlt1 } from "react-icons/hi";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Spinner } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import { fetchCategory } from "../_repo/category_repository";
+import { IoMdSearch } from "react-icons/io";
 export const NavigationBar = () => {
   const [visible, setVisible] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [pageNo, setPageNo] = useState(0);
+  const [pageSize] = useState(6);
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const data = await fetchCategory(pageNo, pageSize);
+        setCategories(data.content);
+      } catch (error) {
+        console.error("Error loading category:", error);
+      } 
+    };
 
-  //function toggle visiblity
+    loadCategories();
+  }, [pageNo, pageSize]);
+
+//handle category change
+  const handleCategoryChange = (e)=> {
+    setSelectedCategory(e.target.value);
+  };
+ 
+    //handle search
+
+    const handleSearch = async () =>{
+      if(!selectedCategory){
+        console.error('please select a category');
+        return;
+      };
+    };
+    //function toggle visiblity
 
   const toggleDropdown = () => {
     setVisible(!visible);
@@ -68,16 +100,12 @@ export const NavigationBar = () => {
                     <div className="advance_serach">
                       <div className="select_option mb-0 clearfix">
                         <Form.Select>
-                          <option data-display="All Categories">
+                          <option data-display="All Categories" value={selectedCategory} onChange={handleCategoryChange}>
                             Select A Category
                           </option>
-                          <option value="1">New Arrival Products</option>
-                          <option value="2">Most Popular Products</option>
-                          <option value="3">Deals of the day</option>
-                          <option value="4">Mobile Accessories</option>
-                          <option value="5">Computer Accessories</option>
-                          <option value="6">Consumer Electronics</option>
-                          <option value="7">Automobiles & Motorcycles</option>
+                          <option value="1">Phones</option>
+                          <option value="2">Laptop</option>
+                   
                         </Form.Select>
                       </div>
                       <div className="form_item">
@@ -86,8 +114,8 @@ export const NavigationBar = () => {
                           name="search"
                           placeholder="Search Products..."
                         />
-                        <button type="submit" className="search_btn">
-                          <i className="far fa-search"></i>
+                        <button onClick={handleSearch} className="search_btn" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', }} disabled={loading}>
+                        <IoMdSearch />
                         </button>
                       </div>
                     </div>
@@ -395,3 +423,4 @@ export const NavigationBar = () => {
     </>
   );
 };
+
