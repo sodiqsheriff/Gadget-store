@@ -1,4 +1,5 @@
 import React from "react";
+import { AddToCartButton } from "./AddToCart";
 
 export const ProductCard = (props) => {
 
@@ -104,9 +105,8 @@ export const ProductCard = (props) => {
             </ins>
           </span>
           <div className="add-cart-area">
-            <button className="add-to-cart" href="./cart.html">
-              Add to cart
-            </button>
+                     <AddToCartButton product={product} className="add-to-cart" />
+
           </div>
         </div>
       </div>

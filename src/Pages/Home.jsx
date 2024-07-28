@@ -14,6 +14,7 @@ import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { fetchProduct } from "../_repo/product_repository";
 import { ProductCard } from "../_Component/card_component";
 import { CartContext } from "../contexts/CartContext";
+import { AddToCartButton } from "../_Component/AddToCart";
 
 export const Home = ({ product }) => {
   console.log("Home called");
@@ -57,14 +58,7 @@ export const Home = ({ product }) => {
   const [pageSize] = useState(6);
   const { addToCart } = useContext(CartContext);
 
-  const handleAddToCart = () => {
-    addToCart({
-      id: product.ProductId,
-      name: product.ProductName,
-      price: product.ProductPrice,
-      image: product.ProductImage, // Ensure you have this property
-    }, 1);
-  };
+  
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -226,9 +220,8 @@ export const Home = ({ product }) => {
 
                           <ul className="default_btns_group ul_li">
                             <li>
-                              <button onClick={handleAddToCart} className="addtocart_btn">
-                                Add To Cart
-                              </button>
+                            <AddToCartButton product={product} />
+
                             </li>
                             <li>
                               <a href="#!">
@@ -579,9 +572,8 @@ export const Home = ({ product }) => {
                         </ins>
                       </span>
                       <div className="add-cart-area">
-                      <button onClick={handleAddToCart} className="addtocart_btn">
-                                Add To Cart
-                              </button>
+                      <AddToCartButton product={product} />
+
                       </div>
                     </div>
                   </div>
@@ -692,9 +684,8 @@ export const Home = ({ product }) => {
                         </del>
                       </span>
                       <div className="add-cart-area">
-                      <button onClick={handleAddToCart} className="addtocart_btn">
-                                Add To Cart
-                              </button>
+                      <AddToCartButton product={product} />
+
                       </div>
                     </div>
                   </div>
@@ -805,9 +796,8 @@ export const Home = ({ product }) => {
                         </del>
                       </span>
                       <div className="add-cart-area">
-                      <button onClick={handleAddToCart} className="addtocart_btn">
-                                Add To Cart
-                              </button>
+                      <AddToCartButton product={product} />
+
                       </div>
                     </div>
                   </div>
@@ -918,9 +908,8 @@ export const Home = ({ product }) => {
                         </del>
                       </span>
                       <div className="add-cart-area">
-                      <button onClick={handleAddToCart} className="addtocart_btn">
-                                Add To Cart
-                              </button>
+                      <AddToCartButton product={product} />
+
                       </div>
                     </div>
                   </div>
