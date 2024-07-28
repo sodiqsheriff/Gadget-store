@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Wrapper } from "../_Component/Wrapper";
 import image1 from "../assets/wactch.svg";
 import image2 from "../assets/wactch.svg";
-import { CartContext } from "../_Component/CartContext";
+import { CartContext } from "../contexts/CartContext";
 
 
 

@@ -1,46 +1,22 @@
-import React, { useEffect, useState } from "react";
-import image1 from '../assets/images/cart/cart_img_1.jpg';
-import image2 from '../assets/images/cart/cart_img_2.jpg';
-import image3 from '../assets/images/cart/cart_img_3.jpg';
+import React, { useEffect, useState, useContext } from "react";
 import logo from "../../src/assets/images/logo.svg";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { Container, Row, Col, Form, Spinner } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import { fetchCategory } from "../_repo/category_repository";
 import { IoMdSearch } from "react-icons/io";
+import { SideCart } from "./side_cart";
+import { SearchContext } from "../contexts/SearchContext";
 export const NavigationBar = () => {
   const [visible, setVisible] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [pageNo, setPageNo] = useState(0);
-  const [pageSize] = useState(6);
-  useEffect(() => {
-    const loadCategories = async () => {
-      try {
-        const data = await fetchCategory(pageNo, pageSize);
-        setCategories(data.content);
-      } catch (error) {
-        console.error("Error loading category:", error);
-      } 
-    };
+  const { setSearchParams } = useContext(SearchContext);
+  const [category, setCategory] = useState('');
+  const [query, setQuery] = useState('');
 
-    loadCategories();
-  }, [pageNo, pageSize]);
-
-//handle category change
-  const handleCategoryChange = (e)=> {
-    setSelectedCategory(e.target.value);
+  const handleSearch = () => {
+    setSearchParams((prevParams) => ({ ...prevParams, category, query, pageNo: 0 }));
   };
- 
-    //handle search
 
-    const handleSearch = async () =>{
-      if(!selectedCategory){
-        console.error('please select a category');
-        return;
-      };
-    };
     //function toggle visiblity
 
   const toggleDropdown = () => {
@@ -100,7 +76,7 @@ export const NavigationBar = () => {
                     <div className="advance_serach">
                       <div className="select_option mb-0 clearfix">
                         <Form.Select>
-                          <option data-display="All Categories" value={selectedCategory} onChange={handleCategoryChange}>
+                          <option data-display="All Categories" value={category} onChange={(e) => setCategory(e.target.value)}>
                             Select A Category
                           </option>
                           <option value="1">Phones</option>
@@ -110,11 +86,13 @@ export const NavigationBar = () => {
                       </div>
                       <div className="form_item">
                         <Form.Control
-                          type="search"
+                          type="text"
+                          value={query}
+                          onChange={(e) => setQuery(e.target.value)}
                           name="search"
                           placeholder="Search Products..."
                         />
-                        <button onClick={handleSearch} className="search_btn" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', }} disabled={loading}>
+                        <button onClick={handleSearch} className="search_btn" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', }} >
                         <IoMdSearch />
                         </button>
                       </div>
@@ -337,87 +315,7 @@ export const NavigationBar = () => {
         </header>
         {/* header_section - end */}
 
-        {/* Sidebar Cart Section */}
-
-        <div className="sidebar-menu-wrapper">
-          <div className="cart_sidebar">
-            <button type="button" className="close_btn">
-              <i className="fal fa-times"></i>
-            </button>
-            <ul className="cart_items_list ul_li_block mb_30 clearfix">
-              <li>
-                <div className="item_image">
-                  <img src={image1} alt='alt' />
-                </div>
-                <div className="item_content">
-                  <h4 className="item_title">Yellow Blouse</h4>
-                  <span className="item_price">$30.00</span>
-                </div>
-                <button type="button" className="remove_btn">
-                  <i className="fal fa-trash-alt"></i>
-                </button>
-              </li>
-              <li>
-                <div className="item_image">
-                  <img src={image2} alt='alt' />
-                </div>
-                <div className="item_content">
-                  <h4 className="item_title">Yellow Blouse</h4>
-                  <span className="item_price">$30.00</span>
-                </div>
-                <button type="button" className="remove_btn">
-                  <i className="fal fa-trash-alt"></i>
-                </button>
-              </li>
-              <li>
-                <div className="item_image">
-                  <img src={image3} alt='alt' />
-                </div>
-                <div className="item_content">
-                  <h4 className="item_title">Yellow Blouse</h4>
-                  <span className="item_price">$30.00</span>
-                </div>
-                <button type="button" className="remove_btn">
-                  <i className="fal fa-trash-alt"></i>
-                </button>
-              </li>
-            </ul>
-
-            <ul className="total_price ul_li_block mb_30 clearfix">
-              <li>
-                <span>Subtotal:</span>
-                <span>$90</span>
-              </li>
-              <li>
-                <span>Vat 5%:</span>
-                <span>$4.5</span>
-              </li>
-              <li>
-                <span>Discount 20%:</span>
-                <span>- $18.9</span>
-              </li>
-              <li>
-                <span>Total:</span>
-                <span>$75.6</span>
-              </li>
-            </ul>
-
-            <ul className="btns_group ul_li_block clearfix">
-              <li>
-                <a className="btn btn_primary" href="cart.html">
-                  View Cart
-                </a>
-              </li>
-              <li>
-                <a className="btn btn_secondary" href="checkout.html">
-                  Checkout
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="cart_overlay"></div>
-        </div>
+        <SideCart />
         {/* End Sidebar cart conent */}
       </div>
     </>

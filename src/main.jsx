@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CartProvider } from './_Component/CartContext';
+import { CartProvider } from './contexts/CartContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <CartProvider>

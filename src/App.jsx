@@ -15,10 +15,12 @@ import { Reset } from './Pages/auth/Reset.jsx';
 import { ShopList } from './Pages/shop/ShopList.jsx';
 import { Shop } from './Pages/shop/Shop.jsx';
 import { Contact } from './Pages/Contact.jsx';
+import { SearchProvider } from './contexts/SearchContext.jsx';
 // import { Reset } from './auth/Reset.jsx';
 
 function App() {
   return (
+    <SearchProvider>
     <BrowserRouter>
       <Routes>
         <Route  path="login" element={<Login />} />
@@ -32,7 +34,6 @@ function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="contact" element={<Contact />} />
-
           <Route path="ordertracking" element={<Order_tracking />} />
           <Route path="about" element={<About />} />
           <Route path="account" element={<Account />} />
@@ -44,6 +45,7 @@ function App() {
 
       </Routes>
     </BrowserRouter>
+    </SearchProvider>
   );
 }
 

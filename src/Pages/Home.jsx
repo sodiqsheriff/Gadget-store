@@ -13,7 +13,7 @@ import { CustomSlider } from "../_Component/CustomSlider";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { fetchProduct } from "../_repo/product_repository";
 import { ProductCard } from "../_Component/card_component";
-import { CartContext } from "../_Component/CartContext";
+import { CartContext } from "../contexts/CartContext";
 
 export const Home = ({ product }) => {
   console.log("Home called");
