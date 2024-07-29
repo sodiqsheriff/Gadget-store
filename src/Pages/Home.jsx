@@ -56,6 +56,8 @@ export const Home = ({ product }) => {
   const [loading, setLoading] = useState(true);
   const [pageNo, setPageNo] = useState(0);
   const [pageSize] = useState(6);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
   const { addToCart } = useContext(CartContext);
 
   
@@ -77,7 +79,13 @@ export const Home = ({ product }) => {
   if (loading) {
     return <Spinner animation="border" />;
   }
-  return (
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+  };  return (
     <>
       {/* <Wrapper> */}
       <main>
@@ -91,194 +99,6 @@ export const Home = ({ product }) => {
           aria-labelledby="exampleModalToggleLabel2"
           tabIndex="1"
         >
-          <div className="modal-dialog modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalToggleLabel2">
-                  Product Quick View
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body">
-                <div className="product_details">
-                  <div className="container">
-                    <div className="row">
-                      <div className="col col-lg-6">
-                        <div className="product_details_image p-0">
-                          <img src={shop} alt="alt" />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="product_details_content">
-                          <h2 className="item_title">Macbook Pro</h2>
-                          <p>
-                            It is a long established fact that a reader will be
-                            distracted eget velit. Donec ac tempus ante. Fusce
-                            ultricies massa massa. Fusce aliquam, purus eget
-                            sagittis vulputate
-                          </p>
-                          <div className="item_review">
-                            <ul className="rating_star ul_li">
-                              <li>
-                                <i className="fas fa-star"></i>
-                              </li>
-                              <li>
-                                <i className="fas fa-star"></i>
-                              </li>
-                              <li>
-                                <i className="fas fa-star"></i>
-                              </li>
-                              <li>
-                                <i className="fas fa-star"></i>
-                              </li>
-                              <li>
-                                <i className="fas fa-star"></i>
-                              </li>
-                            </ul>
-                            <span className="review_value">3 Rating(s)</span>
-                          </div>
-                          <div className="item_price">
-                            <span>$620.00</span>
-                            <del>$720.00</del>
-                          </div>
-                          <hr />
-                          <div className="item_attribute">
-                            <h3 className="title_text">
-                              Options <span className="underline"></span>
-                            </h3>
-                            <form action="#">
-                              <div className="row">
-                                <div className="col col-md-6">
-                                  <div className="select_option clearfix">
-                                    <h4 className="input_title">Size *</h4>
-                                    <select>
-                                      <option data-display="- Please select -">
-                                        Choose A Option
-                                      </option>
-                                      <option value="1">Some option</option>
-                                      <option value="2">Another option</option>
-                                      <option value="3" disabled>
-                                        A disabled option
-                                      </option>
-                                      <option value="4">Potato</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div className="col col-md-6">
-                                  <div className="select_option clearfix">
-                                    <h4 className="input_title">Color *</h4>
-                                    <select>
-                                      <option data-display="- Please select -">
-                                        Choose A Option
-                                      </option>
-                                      <option value={1}>Some option</option>
-                                      <option value={2}>Another option</option>
-                                      <option value={3} disabled>
-                                        A disabled option
-                                      </option>
-                                      <option value={4}>Potato</option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
-                              <span className="repuired_text">
-                                Required Fields *
-                              </span>
-                            </form>
-                          </div>
-
-                          <div className="quantity_wrap">
-                            <form action="#">
-                              <div className="quantity_input">
-                                <button
-                                  type="button"
-                                  className="input_number_decrement"
-                                >
-                                  <i className="fal fa-minus"></i>
-                                </button>
-                                <input
-                                  className="input_number"
-                                  type="text"
-                                  value="1"
-                                />
-                                <button
-                                  type="button"
-                                  className="input_number_increment"
-                                >
-                                  <i className="fal fa-plus"></i>
-                                </button>
-                              </div>
-                            </form>
-                            <div className="total_price">Total: $620,99</div>
-                          </div>
-
-                          <ul className="default_btns_group ul_li">
-                            <li>
-                            <AddToCartButton product={product} />
-
-                            </li>
-                            <li>
-                              <a href="#!">
-                                <i className="far fa-compress-alt"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#!">
-                                <i className="fas fa-heart"></i>
-                              </a>
-                            </li>
-                          </ul>
-
-                          <ul className="default_share_links ul_li">
-                            <li>
-                              <a className="facebook" href="#!">
-                                <span>
-                                  <i className="fab fa-facebook-square"></i>{" "}
-                                  Like
-                                </span>
-                                <small>10K</small>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="twitter" href="#!">
-                                <span>
-                                  <i className="fab fa-twitter-square"></i>{" "}
-                                  Tweet
-                                </span>
-                                <small>15K</small>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="google" href="#!">
-                                <span>
-                                  <i className="fab fa-google-plus-square"></i>{" "}
-                                  Google+
-                                </span>
-                                <small>20K</small>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="share" href="#!">
-                                <span>
-                                  <i className="fas fa-plus-square"></i> Share
-                                </span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         {/* <!-- product quick view modal - end
             ================================================== -->
@@ -370,10 +190,17 @@ export const Home = ({ product }) => {
                           <ProductCard
                             key={product.productId}
                             productData={product}
+                            onClick={handleProductClick}
                           />
                         ))
                       ) : (
                         <p>No products available</p>
+                      )}
+                      {selectedProduct && (
+                        <ProductModal
+                        product={selectedProduct}
+                        onClose={handleCloseModal}
+                        />
                       )}
                     </div>
                     <Row>

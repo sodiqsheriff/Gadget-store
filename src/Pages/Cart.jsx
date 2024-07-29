@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Wrapper } from "../_Component/Wrapper";
-import image1 from "../assets/wactch.svg";
-import image2 from "../assets/wactch.svg";
-import { CartContext } from "../contexts/CartContext";
+import React from "react";
 import { SideCart } from "../_Component/side_cart";
+import { TableData } from "../_Component/table_data";
 
 
 
 export const Cart = () => {
-  const { cartItems, removeFromCart } = useContext(CartContext);
 
   return (
       <main>
@@ -43,37 +39,7 @@ export const Cart = () => {
               </p>
             </div>
 
-            <div className="cart_table">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th className="text-center">Price</th>
-                    <th className="text-center">Quantity</th>
-                    <th className="text-center">Total</th>
-                    <th className="text-center">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <div>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        cartItems.map((item) => (
-          <div key={item.productId}>
-            <img src={item.productImage} alt={item.productName} width="100" />
-            <span>{item.productName}</span>
-            <span>Quantity: {item.quantity}</span>
-            <span>Price: ${item.productPrice}</span>
-            <span>Total Price: ${(item.price * item.quantity).toFixed(2)}</span>
-            <button onClick={() => removeFromCart(item.id)}>Remove</button>
-          </div>
-        ))
-      )}
-    </div>
-                </tbody>
-              </table>
-            </div>
+           <TableData />
 
             <div className="cart_btns_wrap">
               <div className="row">

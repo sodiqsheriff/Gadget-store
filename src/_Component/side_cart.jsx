@@ -20,10 +20,10 @@ export const SideCart = () => {
               </div>
               <div className="item_content">
                 <h4 className="item_title">{item.productName}</h4>
-                <span className="item_price">${(item.price * item.quantity).toFixed(2)}</span>
+                <span className="item_price">${(item.productPrice * item.quantity).toFixed(2)}</span>
                 <span className="item_quantity">Qty: {item.quantity}</span>
               </div>
-              <button type="button" className="remove_btn" onClick={() => removeFromCart(item.id)}>
+              <button type="button" className="remove_btn" onClick={() => removeFromCart(item.productId)}>
                 <i className="fal fa-trash-alt"></i>
               </button>
             </li>

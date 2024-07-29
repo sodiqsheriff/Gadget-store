@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
   // Add item to cart
   const addToCart = (product, quantity = 1) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i.id === product.id);
+      const existingItem = prevItems.find((i) => i.id === product.ProductId);
       if (existingItem) {
         // Update quantity if item already exists in cart
         return prevItems.map((i) =>
@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
 
   // Calculate totals
   const calculateTotal = () => {
-    const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const subtotal = cartItems.reduce((acc, item) => acc + item.productPrice * item.quantity, 0);
     const vat = subtotal * 0.05;
     const discount = subtotal * 0.2;
     const total = subtotal + vat - discount;

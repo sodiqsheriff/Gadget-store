@@ -96,43 +96,123 @@
     text-decoration: none;
   }
 
-  /* src/App.css */
-.dropdwn {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdwn-toggle {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdwn-menu {
-  display: block;
-  position: absolute;
-  background-color: white;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  min-width: 160px;
-}
-
-.dropdwn-menu li {
-  padding: 8px 16px;
-}
-
-.dropdwn-menu li a {
-  text-decoration: none;
-  color: black;
-  display: block;
-}
-
-.dropdwn-menu li:hover {
-  background-color: #f1f1f1;
-}
+  .custom_header_bottom {
+    background-color: #f8f9fa; /* or your preferred background color */
+    padding: 10px 0;
+  }
+  
+  .custom_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .custom_row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .custom_col {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .custom_col-md-3 {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .custom_col-md-6 {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .custom_col-md-3 {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .custom_allcategories_dropdown {
+    position: relative;
+  }
+  
+  .custom_allcategories_btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .custom_allcategories_collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: none; /* Hidden by default */
+  }
+  
+  .custom_allcategories_collapse.show {
+    display: block; /* Show when toggled */
+    position: sticky;
+    z-index: 99 ;
+  }
+  
+  .custom_card {
+    padding: 10px;
+  }
+  
+  .custom_allcategories_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .custom_allcategories_list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .custom_allcategories_list li a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .custom_main_menu {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .custom_main_menu_list {
+    display: flex;
+    gap:5em;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .custom_main_menu_list li {
+    margin: 0 10px;
+  }
+  
+  .custom_header_icons_group {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .custom_header_icons_group li {
+    margin: 0 5px;
+  }
+  
