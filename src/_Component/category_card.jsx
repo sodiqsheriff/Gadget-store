@@ -1,20 +1,11 @@
-import React from "react";
-import { AddToCartButton } from "./AddToCart";
+import React from 'react';
+import { AddToCartButton } from './AddToCart';
 
 export const CategoryCard = ({ categoryData: category, onCategoryClick }) => {
-  // Fallback values in case category data is undefined or missing
-  const {
-    categoryId = 'default-key',
-    categoryImage = 'default-image-url', // Replace with a default image URL
-    categoryName = 'Default Category',
-    categoryDescription = 'Default Description',
-    categoryPrice = '0.00', // If you don't have a price, you might want to omit this or handle differently
-  } = category || {};
-
   return (
-    <div key={categoryId} className="grid">
+    <div key={category.categoryId} className="grid">
       <div className="product-pic">
-        <img src={categoryImage} style={{ height: "200px" }} alt={categoryName} />
+        <img src={category.categoryImage} style={{ height: '200px' }} alt={category.categoryName} />
         <div className="actions">
           <ul>
             <li>
@@ -92,21 +83,11 @@ export const CategoryCard = ({ categoryData: category, onCategoryClick }) => {
       </div>
       <div className="details">
         <h4>
-          <a href="#">{categoryName}</a>
+          <a href="#">{category.categoryName}</a>
         </h4>
-        <p>
-          <a href="#">{categoryDescription}</a>
-        </p>
-        <span className="price">
-          <ins>
-            <span className="woocommerce-Price-amount amount">
-              <bdi>
-                <span className="woocommerce-Price-currencySymbol">$</span>
-                {categoryPrice}
-              </bdi>
-            </span>
-          </ins>
-        </span>
+        <p>{category.categroyDescription}</p>
+
+
         <div className="add-cart-area">
           <AddToCartButton category={category} className="add-to-cart" />
         </div>

@@ -3,7 +3,7 @@ import { AddToCartButton } from './AddToCart';
 
 export const ProductModal = ({ product, onClose }) => {
   if (!product) {
-    return null; // Or you can return a loading spinner or some placeholder
+    return null; 
   }
 
   return (
@@ -42,11 +42,6 @@ export const ProductModal = ({ product, onClose }) => {
                         <li>
                           <AddToCartButton product={product} />
                         </li>
-                        <li>
-                          <a className="btn btn_primary" href="#!">
-                            Add to Wishlist
-                          </a>
-                        </li>
                       </ul>
                       <ul className="default_btns_group ul_li">
                         <li>
@@ -76,3 +71,37 @@ export const ProductModal = ({ product, onClose }) => {
     </div>
   );
 };
+
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+export const CategoryModal = ({ category, onClose }) => {
+  if (!category) return null;
+
+  return (
+    <div 
+      className="modal show" 
+      tabIndex="-1" 
+      style={{ display: 'block' }}
+      onClick={onClose} 
+    >
+      <div className="modal-dialog" onClick={(e) => e.stopPropagation()}> {/* Prevents modal close when clicking inside the modal */}
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">{category.categoryName}</h5>
+            <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
+          </div>
+          <div className="modal-body">
+            <img src={category.categoryImage} alt={category.categoryName} style={{ width: '100%', height: 'auto' }} />
+            <p>{category.categroyDescription}</p>
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-secondary" onClick={onClose}>Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+

@@ -8,7 +8,7 @@ import { ProductCard } from "../_Component/card_component";
 import { CartContext } from "../contexts/CartContext";
 import { AddToCartButton } from "../_Component/AddToCart";
 import { fetchCategory } from "../_repo/category_repository";
-import { ProductModal } from "../_Component/modal_card";
+import { CategoryModal, ProductModal } from "../_Component/modal_card";
 import { CategoryCard } from "../_Component/category_card";
 
 export const Home = ({ product, category }) => {
@@ -337,7 +337,7 @@ export const Home = ({ product, category }) => {
             categories.map((category) => (
               <CategoryCard
                 key={category.categoryId}
-                productData={category}
+                categoryData={category}
                 onCategoryClick={handleCategoryClick}
               />
             ))
@@ -346,9 +346,9 @@ export const Home = ({ product, category }) => {
           )
         )}
         {selectedCategory && (
-          <ProductModal
-            product={selectedCategory}
-            onClose={handleCloseModal}
+          <CategoryModal
+            category={selectedCategory}
+            onClose={handleClosedModal}
           />
         )}
       </div>
