@@ -348,71 +348,7 @@ export const ShopList = () => {
                   </div>
                 </div>
 
-                <div
-                  className="tab-pane fade show active"
-                  id="profile"
-                  role="tabpanel"
-                >
-                  <div className="product_layout2_wrap">
-                    <div className="product-area-row">
-                      <div className="grid clearfix">
-                        <div className="details">
-                          {data.map((item) => (
-                            <div key={item.categoryId}>
-                              <img
-                                src={item.categoryImage}
-                                alt={item.categoryName}
-                              />
-                              <h2>{item.categoryName}</h2>
-                              <span className="price">
-                                <ins>
-                                  <span className="woocommerce-Price-amount amount">
-                                    <bdi>
-                                      {" "}
-                                      <span className="woocommerce-Price-currencySymbol">
-                                        $
-                                      </span>
-                                      {item.categoryPrice}
-                                    </bdi>
-                                  </span>
-                                </ins>
-                              </span>
-                              <div className="add-cart-area">
-                                <button className="add-to-cart">
-                                  Add to cart
-                                </button>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="pagination_wrap">
-                    <ul className="pagination_nav">
-                      <li className="active">
-                        <a href="#!">01</a>
-                      </li>
-                      <li>
-                        <a href="#!">02</a>
-                      </li>
-                      <li>
-                        <a href="#!">03</a>
-                      </li>
-                      <li className="prev_btn">
-                        <a href="#!">
-                          <i className="fal fa-angle-left"></i>
-                        </a>
-                      </li>
-                      <li className="next_btn">
-                        <a href="#!">
-                          <i className="fal fa-angle-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>

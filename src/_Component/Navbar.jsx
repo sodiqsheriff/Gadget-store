@@ -201,7 +201,7 @@ export const NavigationBar = () => {
                 data-bs-target="#custom_allcategories_collapse"
                 aria-expanded="false"
                 aria-controls="custom_allcategories_collapse"
-                style={{backgroundColor: '#2563EB', color: 'white', fontWeight: 'medium', fontSize:'22px'}}
+                style={{backgroundColor: 'gray', fontWeight: 'medium', }}
               >
                 <svg
                   role="img"

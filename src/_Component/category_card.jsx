@@ -1,11 +1,20 @@
 import React from "react";
 import { AddToCartButton } from "./AddToCart";
 
-export const ProductCard = ({ productData: product, onProductClick }) => {
+export const CategoryCard = ({ categoryData: category, onCategoryClick }) => {
+  // Fallback values in case category data is undefined or missing
+  const {
+    categoryId = 'default-key',
+    categoryImage = 'default-image-url', // Replace with a default image URL
+    categoryName = 'Default Category',
+    categoryDescription = 'Default Description',
+    categoryPrice = '0.00', // If you don't have a price, you might want to omit this or handle differently
+  } = category || {};
+
   return (
-    <div key={product.productId} className="grid">
+    <div key={categoryId} className="grid">
       <div className="product-pic">
-        <img src={product.productImage} style={{ height: "200px" }} alt={product.productName} />
+        <img src={categoryImage} style={{ height: "200px" }} alt={categoryName} />
         <div className="actions">
           <ul>
             <li>
@@ -58,7 +67,7 @@ export const ProductCard = ({ productData: product, onProductClick }) => {
                 href="#quickview_popup"
                 role="button"
                 tabIndex="0"
-                onClick={() => onProductClick(product)}
+                onClick={() => onCategoryClick(category)}
               >
                 <svg
                   width="48px"
@@ -83,13 +92,23 @@ export const ProductCard = ({ productData: product, onProductClick }) => {
       </div>
       <div className="details">
         <h4>
-          <a href="#">{product.productName}</a>
+          <a href="#">{categoryName}</a>
         </h4>
         <p>
-          <a href="#">{product.productDescription}</a>
+          <a href="#">{categoryDescription}</a>
         </p>
+        <span className="price">
+          <ins>
+            <span className="woocommerce-Price-amount amount">
+              <bdi>
+                <span className="woocommerce-Price-currencySymbol">$</span>
+                {categoryPrice}
+              </bdi>
+            </span>
+          </ins>
+        </span>
         <div className="add-cart-area">
-          <AddToCartButton product={product} className="add-to-cart" />
+          <AddToCartButton category={category} className="add-to-cart" />
         </div>
       </div>
     </div>
