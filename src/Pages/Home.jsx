@@ -5,7 +5,7 @@ import { CustomSlider } from "../_Component/CustomSlider";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { fetchProduct } from "../_repo/product_repository";
 import { ProductCard } from "../_Component/card_component";
-import  CartContext  from "../contexts/CartContext";
+import CartContext from "../contexts/CartContext";
 // import { addToCart } from "../_Component/AddToCart";
 import { fetchCategory } from "../_repo/category_repository";
 import { CategoryModal, ProductModal } from "../_Component/modal_card";
@@ -54,7 +54,6 @@ export const Home = ({ product, category }) => {
   const [pageNo, setPageNo] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [pageSize] = useState(6);
-  
 
   const { addToCart } = useContext(CartContext);
 
@@ -81,7 +80,7 @@ export const Home = ({ product, category }) => {
         const data = await fetchCategory(pageNo, 6);
         setCategories(data.content);
       } catch (error) {
-        console.error('Error loading categories:', error);
+        console.error("Error loading categories:", error);
       } finally {
         setIsLoading(false);
       }
@@ -106,7 +105,7 @@ export const Home = ({ product, category }) => {
     setSelectedCategory(null);
   };
 
-   return (
+  return (
     <>
       {/* <Wrapper> */}
       <main>
@@ -119,8 +118,7 @@ export const Home = ({ product, category }) => {
           aria-hidden="true"
           aria-labelledby="exampleModalToggleLabel2"
           tabIndex="1"
-        >
-        </div>
+        ></div>
         {/* <!-- product quick view modal - end
             ================================================== -->
 
@@ -205,47 +203,53 @@ export const Home = ({ product, category }) => {
                   </div>
 
                   <Container>
-      <div className="product-area clearfix">
-        {isLoading ? (
-          <div className="text-center">
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </div>
-        ) : products.length > 0 ? (
-          products.map((product) => (
-            <ProductCard
-              key={product.productId}
-              productData={product}
-              onProductClick={handleProductClick}
-            />
-          ))
-        ) : (
-          <p>No products available</p>
-        )}
-        {selectedProduct && (
-          <ProductModal
-            product={selectedProduct}
-            onClose={handleCloseModal}
-          />
-        )}
-      </div>
-      <Row>
-        <Col className="d-flex justify-content-between">
-          <Button
-            onClick={() =>
-              setPageNo((prevPageNo) => Math.max(prevPageNo - 1, 0))
-            }
-            disabled={pageNo === 0}
-          >
-            Previous
-          </Button>
-          <Button onClick={() => setPageNo((prevPageNo) => prevPageNo + 1)}>
-            Next
-          </Button>
-        </Col>
-      </Row>
-    </Container>
+                    <div className="product-area clearfix">
+                      {isLoading ? (
+                        <div className="text-center">
+                          <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                          </Spinner>
+                        </div>
+                      ) : products.length > 0 ? (
+                        products.map((product) => (
+                          <ProductCard
+                            key={product.productId}
+                            productData={product}
+                            onProductClick={handleProductClick}
+                          />
+                        ))
+                      ) : (
+                        <p>No products available</p>
+                      )}
+                      {selectedProduct && (
+                        <ProductModal
+                          product={selectedProduct}
+                          onClose={handleCloseModal}
+                        />
+                      )}
+                    </div>
+                    <Row>
+                      <Col className="d-flex justify-content-between">
+                        <Button
+                          onClick={() =>
+                            setPageNo((prevPageNo) =>
+                              Math.max(prevPageNo - 1, 0)
+                            )
+                          }
+                          disabled={pageNo === 0}
+                        >
+                          Previous
+                        </Button>
+                        <Button
+                          onClick={() =>
+                            setPageNo((prevPageNo) => prevPageNo + 1)
+                          }
+                        >
+                          Next
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Container>
                 </div>
               </div>
             </div>
@@ -324,49 +328,54 @@ export const Home = ({ product, category }) => {
 
               <div className="col col-lg-7">
                 <div className="new-arrivals-grids clearfix">
-                <Container>
-      <div className="product-area clearfix">
-        {isLoading ? (
-          <div className="text-center">
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </div>
-        ) : (
-          categories.length > 0 ? (
-            categories.map((category) => (
-              <CategoryCard
-                key={category.categoryId}
-                categoryData={category}
-                onCategoryClick={handleCategoryClick}
-              />
-            ))
-          ) : (
-            <p>No categories available</p>
-          )
-        )}
-        {selectedCategory && (
-          <CategoryModal
-            category={selectedCategory}
-            onClose={handleClosedModal}
-          />
-        )}
-      </div>
-      <Row>
-        <Col className="d-flex justify-content-between">
-          <Button
-            onClick={() => setPageNo((prevPageNo) => Math.max(prevPageNo - 1, 0))}
-            disabled={pageNo === 0}
-          >
-            Previous
-          </Button>
-          <Button onClick={() => setPageNo((prevPageNo) => prevPageNo + 1)}>
-            Next
-          </Button>
-        </Col>
-      </Row>
-    </Container>
-                  
+                  <Container>
+                    <div className="product-area clearfix">
+                      {isLoading ? (
+                        <div className="text-center">
+                          <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                          </Spinner>
+                        </div>
+                      ) : categories.length > 0 ? (
+                        categories.map((category) => (
+                          <CategoryCard
+                            key={category.categoryId}
+                            categoryData={category}
+                            onCategoryClick={handleCategoryClick}
+                          />
+                        ))
+                      ) : (
+                        <p>No categories available</p>
+                      )}
+                      {selectedCategory && (
+                        <CategoryModal
+                          category={selectedCategory}
+                          onClose={handleClosedModal}
+                        />
+                      )}
+                    </div>
+                    <Row>
+                      <Col className="d-flex justify-content-between">
+                        <Button
+                          onClick={() =>
+                            setPageNo((prevPageNo) =>
+                              Math.max(prevPageNo - 1, 0)
+                            )
+                          }
+                          disabled={pageNo === 0}
+                        >
+                          Previous
+                        </Button>
+                        <Button
+                          onClick={() =>
+                            setPageNo((prevPageNo) => prevPageNo + 1)
+                          }
+                        >
+                          Next
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Container>
                 </div>
               </div>
             </div>
