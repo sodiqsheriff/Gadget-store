@@ -7,7 +7,7 @@ import { TableData } from "../_Component/table_data";
 export const Cart = () => {
 
   return (
-      <main>
+      <main style={{marginTop: '3em'}}>
         {/* <!-- sidebar cart - start
 ================================================== --> */}
         <SideCart />

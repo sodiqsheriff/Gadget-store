@@ -1,6 +1,7 @@
+// AddToCart.jsx
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../contexts/CartContext';
-import Spinner from 'react-bootstrap/Spinner'; // Assuming you're using react-bootstrap for the spinner
+import Spinner from 'react-bootstrap/Spinner';
 
 export const AddToCartButton = ({ product }) => {
   const { addToCart } = useContext(CartContext);
@@ -30,3 +31,4 @@ export const AddToCartButton = ({ product }) => {
     </button>
   );
 };
+

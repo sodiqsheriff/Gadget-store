@@ -11,11 +11,11 @@ export const CartProvider = ({ children }) => {
   // Add item to cart
   const addToCart = (product, quantity = 1) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i.id === product.ProductId);
+      const existingItem = prevItems.find((i) => i.productId === product.productId);
       if (existingItem) {
         // Update quantity if item already exists in cart
         return prevItems.map((i) =>
-          i.id === product.id ? { ...i, quantity: i.quantity + quantity } : i
+          i.productId === product.productId ? { ...i, quantity: i.quantity + quantity } : i
         );
       } else {
         // Add new item to cart
@@ -25,8 +25,8 @@ export const CartProvider = ({ children }) => {
   };
 
   // Remove item from cart
-  const removeFromCart = (id) => {
-    setCartItems((prevItems) => prevItems.filter((i) => i.id !== id));
+  const removeFromCart = (productId) => {
+    setCartItems((prevItems) => prevItems.filter((i) => i.productId !== productId));
   };
 
   // Calculate totals

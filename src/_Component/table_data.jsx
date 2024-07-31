@@ -1,11 +1,12 @@
+// TableData.jsx
 import React, { useContext } from 'react';
 import { MdOutlineDelete } from 'react-icons/md';
 import { CartContext } from '../contexts/CartContext';
+
 export const TableData = () => {
-    const { cartItems, removeFromCart, calculateTotal } = useContext(CartContext);
-    
+  const { cartItems, removeFromCart } = useContext(CartContext);
+
   return (
-    <>
     <div className="cart_table">
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -32,7 +33,7 @@ export const TableData = () => {
                 <td className="text-center">${(item.productPrice * item.quantity).toFixed(2)}</td>
                 <td className="text-center">
                   <button onClick={() => removeFromCart(item.productId)}>
-                    <MdOutlineDelete />
+                    <MdOutlineDelete style={{ fontSize: '1.5em' }} />
                   </button>
                 </td>
               </tr>
@@ -40,8 +41,6 @@ export const TableData = () => {
           </tbody>
         </table>
       )}
-     
     </div>
-    </>
   );
 };

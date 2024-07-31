@@ -6,6 +6,7 @@ import { fetchCategory } from "../_repo/category_repository";
 import { IoMdSearch } from "react-icons/io";
 import { SideCart } from "./side_cart";
 import { SearchContext } from "../contexts/SearchContext";
+import { SearchBar } from "./SearchBar";
 export const NavigationBar = () => {
   const [visible, setVisible] = useState(false);
   const { setSearchParams } = useContext(SearchContext);
@@ -89,47 +90,7 @@ export const NavigationBar = () => {
                     </Link>
                   </div>
                 </Col>
-                <Col lg={6} md={6} sm={12}>
-                  <Form action="#">
-                    <div className="advance_serach">
-                      <div className="select_option mb-0 clearfix">
-                        <Form.Select
-                          value={category}
-                          onChange={(e) => setCategory(e.target.value)}
-                        >
-                          <option data-display="All Categories" value="">
-                            Select A Category
-                          </option>
-                          {categories.map((cat) => (
-                            <option key={cat.categoryId} value={cat.categoryId}>
-                              {cat.categoryName}
-                            </option>
-                          ))}
-                        </Form.Select>
-                      </div>
-                      <div className="form_item">
-                        <Form.Control
-                          type="text"
-                          value={query}
-                          onChange={(e) => setQuery(e.target.value)}
-                          name="search"
-                          placeholder="Search Products..."
-                        />
-                        <button
-                          onClick={handleSearch}
-                          className="search_btn"
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <IoMdSearch />
-                        </button>
-                      </div>
-                    </div>
-                  </Form>
-                </Col>
+                <SearchBar />
                 <Col lg={3} md={3} sm={12}>
                   <button
                     className="mobile_menu_btn2 navbar-toggler"
@@ -250,7 +211,7 @@ export const NavigationBar = () => {
                
                 <ul className="custom_main_menu_list ul_li">
                   <li>
-                    <Link to="" className="nav-link">
+                    <Link to="/" className="nav-link">
                       Home
                     </Link>
                   </li>
@@ -268,7 +229,7 @@ export const NavigationBar = () => {
                       aria-labelledby="custom_shop_submenu"
                     >
                       <li>
-                        <a href="/shop">Shop List</a>
+                        <Link to="/shoplist">Shop List</Link>
                       </li>
                     </ul>
                   </li>

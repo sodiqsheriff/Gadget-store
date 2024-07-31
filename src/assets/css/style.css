@@ -1120,7 +1120,9 @@ hr {
 ================================================== */
 /* header style - start */
 .header_section {
-  z-index: 99;
+  z-index: 5;
+  position: fixed;
+  width: 100%;
   background-color: #ffffff;
 }
 

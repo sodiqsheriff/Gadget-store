@@ -7,7 +7,7 @@ export const Wrapper = ({ children }) => {
   return (
     <>
       <NavigationBar />
-        <Outlet/>
+        <Outlet />
       <Footer />
     </>
   );
